@@ -14,13 +14,13 @@ export default defineConfig({
         light: './src/assets/logo.svg',
         dark: './src/assets/logo-dark.svg',
       },
-      favicon: 'images/favicon.svg',
+      favicon: './images/favicon.svg',
       head: [
         {
           tag: 'link',
           attrs: {
             rel: 'icon',
-            href: 'images/favicon.ico',
+            href: './images/favicon.ico',
             sizes: '16x16 32x32',
           },
         },
