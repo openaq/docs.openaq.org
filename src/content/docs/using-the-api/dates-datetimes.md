@@ -1,0 +1,50 @@
+---
+title: Dates, times and timezones
+---
+
+
+### Datetimes
+
+Dates and datetimes in the OpenAQ API follow the ISO-8601 datetime format, i.e.
+`YYYY-MM-DDTHH:MM:SS.SSSSZ`.
+
+Data on OpenAQ are harmonized to follow an exclusive time-ending standard. This
+means a time stamp for an hourly measurement 03:00 represents the data from
+02:00 until 02:59.
+
+### Dates
+
+When using dates with the OpenAQ API, it's important to understand that they
+represent the start of a time period. For example, a date like 2024-01-01
+represents the January 1st, 2024, and a year like 2024-01-01 represents the that
+calendar year, 2024. This contrasts with how datetimes are handled in the
+system, where they represent the end of a time period. In other words, while a
+date marks the start of a specific day or year, a datetime indicates when that
+period has concluded. This distinction is crucial for accurately interpreting
+the data retrieved from the API, as it ensures clarity in understanding when
+data collection periods begin and end.
+
+### Timezones
+
+In the OpenAQ system, handling timezones correctly is crucial due to the global
+nature of the dataset, which includes air quality data from monitoring stations
+across different time zones. When requesting data from the OpenAQ API,
+timestamps should ideally include a timezone in the ISO 8601 format (e.g.,
+2024-08-25T15:00:00Z for UTC time). This ensures that the data retrieved
+accurately reflects the time it was recorded, regardless of the station's
+location. If a timezone is not provided in the timestamp, the API automatically
+assumes the local time for the station where the data was collected. This
+default behavior is important to understand, as it can affect data comparisons
+across different regions and time zones. Accurate timezone handling ensures
+consistency and reliability in the analysis and interpretation of air quality
+data on a global scale.
+
+To ensure this is clearly represented in results, the API returns a datetime
+object which includes both UTC time and local time.
+
+```json
+ {
+    "utc": "2019-07-11T20:00:00Z",
+    "local": "2019-07-11T14:00:00-06:00"
+}
+```

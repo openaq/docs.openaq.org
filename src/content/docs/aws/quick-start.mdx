@@ -1,0 +1,44 @@
+---
+title: Quick start
+---
+
+To access large amounts of data from the S3 bucket from our computer's command line, the [AWS CLI](https://aws.amazon.com/cli/) is recommended.  region for the `copy` command to work. We can configure the AWS CLI to use AWS credentials or optionally anonymously request using the `--no-sign-request flag`e.g. 
+
+:::note
+This tutorial uses the AWS command line interface (CLI) tool and assumes you are familiar with using the command line on your computer. The AWS CLI is not a requirement for using the Open Data on AWS bucket but it does provide easy access to AWS APIs necessary for communicating with the bucket.
+:::
+
+import { Steps } from '@astrojs/starlight/components';
+
+
+<Steps>
+
+1. Install and configure the AWS CLI
+    https://aws.amazon.com/cli/
+
+    ```ini
+    // .aws/config
+    [default]
+    region = us-east-1
+    output = json
+    ```
+
+    The AWS CLI profile must be configured to the `us-east-1` to access the bucket.
+
+2. Test that the AWS CLI is installed an configured by running `aws --version` in your command prompt. If version details show, `aws` exists and if configured on your system.
+
+3. To copy all data from [location 2178](https://explore.openaq.org/locations/2178) during the year 2020 to a local directory named `data`:
+
+    ```sh
+    aws s3 cp \
+    --no-sign-request \
+    --recursive \
+    s3://openaq-data-archive/records/csv.gz/locationid=2178/year=2020/ \
+    data
+    ```
+
+
+
+6.
+
+</Steps>

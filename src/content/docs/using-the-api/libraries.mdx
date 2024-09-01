@@ -1,0 +1,23 @@
+---
+title: Libaries
+---
+
+Libraries can simplify and enhance the way your application connects with the OpenAQ API by providing pre-built code tailored to specific programming environments. Once integrated into your project, these libraries allow you to interact with the OpenAQ API more efficiently and consistently.
+
+## Official OpenAQ libraries
+
+OpenAQ maintains two official client libraries: the Python SDK and the OpenAQ CLI. These libraries are the recommended tools for most developers when interacting with the OpenAQ API. They provide a standardized interface that simplifies integration and ensures that developers are following best practices. By using these libraries, developers can more easily access the full range of OpenAQ's features and data, benefiting from a consistent, well-documented approach that aligns with the latest updates and functionalities of the API.
+
+import { CardGrid, Badge } from '@astrojs/starlight/components';
+import CustomCard from '../../../components/CustomCard.astro';
+
+<CardGrid>
+ <CustomCard title='Python SDK' href="https://python.openaq.org" icon="seti:python">
+ <Badge text="New" variant="success" size="small" />
+ The official OpenAQ Python SDK 
+ </CustomCard>
+ <CustomCard title="OpenAQ CLI"  href="https://cli.openaq.org" icon="seti:json">
+ <Badge text="New" variant="success" size="small" />
+ Access OpenAQ in your command line
+ </CustomCard>
+</CardGrid>

@@ -1,0 +1,44 @@
+---
+title: Parameters
+---
+
+The parameters resource in the OpenAQ API provides detailed information about
+the air quality parameters included in the dataset. This resource is essential
+for selecting and understanding the different air quality metrics available for
+analysis.
+
+## Purpose and Use
+The parameters resource helps users identify and understand the various air
+quality measurements provided by the OpenAQ API. It details each parameter’s
+name, units, and description, which supports users in choosing the relevant
+metrics for their air quality analysis and monitoring.
+
+* ID: A unique identifier for each parameter.
+* Name: The internal name used to reference the parameter in the API.
+* Units: The unit of measurement for the parameter (e.g., µg/m³ for mass
+concentration).
+* Display Name: A user-friendly name for the parameter.
+* Description: A brief explanation of what the parameter measures.
+
+## Example reponse payload
+
+```json
+{
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 100,
+    "found": 1
+  },
+  "results": [
+    {
+      "id": 2,
+      "name": "pm25",
+      "units": "µg/m³",
+      "displayName": "PM2.5",
+      "description": "Particulate matter less than 2.5 micrometers in diameter mass concentration"
+    }
+  ]
+}
+```

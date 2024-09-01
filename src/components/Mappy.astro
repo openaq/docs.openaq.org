@@ -1,0 +1,112 @@
+
+
+---
+
+export interface Props {
+  latitude: number
+  longitude: number
+  zoom: number
+  mapstyle: string
+  container: string
+  interactive: boolean
+  geojson: string 
+  marker: string
+  containerstyle?: string
+}
+
+const {
+  latitude,
+  longitude,
+  zoom,
+  interactive,
+  container,
+  geojson,
+  marker,
+  containerstyle = 'height: 61.8vh',
+} = Astro.props;
+---
+
+<maplibre-map
+  data-latitude={latitude}
+  data-longitude={longitude}
+  data-zoom={zoom}
+  data-container={container}
+  data-interactive={interactive}
+  data-containerstyle={containerstyle}
+  data-geojson={geojson}
+  data-marker={marker}
+>
+  <div id={container} style={containerstyle}></div>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css"
+  />
+  <script
+    is:inline
+    src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+  <script is:inline>
+
+    latitude
+
+    class MapLibreMap extends HTMLElement {
+      constructor() {
+        super();
+
+        var map = new maplibregl.Map({
+          container: this.dataset.container,
+          interactive: false,
+          center: [this.dataset.longitude, this.dataset.latitude],
+          style: 'https://basemap.openaq.org/styles/styles.json',
+          zoom: this.dataset.zoom,
+        });
+
+        if (this.dataset.geojson) {
+            map.on('load', () => {
+          map.addSource('geojson-overlay', {
+            type: 'geojson',
+            data: JSON.parse(this.dataset.geojson),
+          });
+
+          map.addLayer({
+            id: 'geojson-overlay',
+            type: 'fill',
+            source: 'geojson-overlay',
+            layout: {},
+            paint: {
+              'fill-color': '#6a5cd8',
+              'fill-opacity': 0.5,
+            },
+          });
+          map.addLayer({
+            id: 'geojson-overlay-outline',
+            type: 'line',
+            source: 'geojson-overlay',
+            paint: {
+              'line-color': '#6a5cd8',
+              'line-width': 4,
+            },
+          });
+        
+
+        });
+        }
+
+        if (this.dataset.marker) {
+            new maplibregl.Marker({
+              color: '#6a5cd8',
+            })
+              .setLngLat([
+                JSON.parse(this.dataset.marker).longitude,
+                JSON.parse(this.dataset.marker).latitude,
+              ])
+              .addTo(map);
+          }
+
+
+      }
+    }
+
+    window.customElements.define('maplibre-map', MapLibreMap);
+  </script>
+</maplibre-map>

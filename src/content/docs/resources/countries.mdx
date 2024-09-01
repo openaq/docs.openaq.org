@@ -1,0 +1,98 @@
+---
+title: Countries
+---
+
+The countries resource in the OpenAQ API lists countries in the data set and 
+details the air quality parameters available for each. The countries resource 
+only include countries which have monitoring locations available in them in 
+OpenAQ. Countries are derived from the coordinates provided by the upstream 
+provider. OpenAQ does not use the same country label as reported by upstream and
+so may differ from the original data source, see the data disclaimer below.
+
+## Purpose and Use
+
+The countries resource helps users discover which countries are in the OpenAQ 
+data set. It also shows the air quality metrics for each country. This makes it 
+easier to filter and analyze air quality data by country and understand global 
+trends.
+
+The key fields for indentifying a country in OpenAQ are:
+
+* id - the unique identifier used within the OpenAQ system for a particular 
+country.
+* code - the ISO 3166-1 alpha 2 code for the country.
+* name - The English name of the country
+
+## Example response payload
+
+```json
+{
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 100,
+    "found": 1
+  },
+  "results": [
+    {
+      "id": 42,
+      "code": "KZ",
+      "name": "Kazakhstan",
+      "datetimeFirst": "2018-07-27T17:00:00Z",
+      "datetimeLast": "2024-08-31T21:07:06.731Z",
+      "parameters": [
+        {
+          "id": 1,
+          "name": "pm10",
+          "units": "µg/m³",
+          "displayName": null
+        },
+        {
+          "id": 2,
+          "name": "pm25",
+          "units": "µg/m³",
+          "displayName": null
+        },
+        {
+          "id": 19,
+          "name": "pm1",
+          "units": "µg/m³",
+          "displayName": null
+        },
+        {
+          "id": 98,
+          "name": "relativehumidity",
+          "units": "%",
+          "displayName": null
+        },
+        {
+          "id": 100,
+          "name": "temperature",
+          "units": "c",
+          "displayName": null
+        },
+        {
+          "id": 125,
+          "name": "um003",
+          "units": "particles/cm³",
+          "displayName": null
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+:::caution[Disclaimer]
+OpenAQ labels moniroting locations with a country label based on the [Natural 
+Earth Admin 0](https://www.naturalearthdata.com/) 10m dataset v5.1.2. 
+These boundaries may not be able to correctly label every station and may 
+require manual or "fuzzy" matching due to the coarse precision of the data and 
+differences in the precision of reported coordinates. Definitions of 
+international boundaries can be complex, dependent on worldview, and politically
+polarizing. The use of these boundaries does not constitute or imply their 
+endorsement by OpenAQ. Read more about Natural Earth’s disputed boundaries 
+policy at https://www.naturalearthdata.com/about/disputed-boundaries-policy/. 
+:::

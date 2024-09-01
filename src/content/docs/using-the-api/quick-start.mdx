@@ -1,0 +1,33 @@
+---
+title: Quick start
+---
+
+
+import { Steps } from '@astrojs/starlight/components';
+
+This guide shows how to fetch data from the OpenAQ API. We will retrieve location details for the "New Delhi" station in New Delhi, India, with OpenAQ location ID 8118.
+
+This tutorial uses curl to make HTTP requests and assumes you are familiar with using the command line on your computer.
+
+<Steps>
+
+1. Run `curl --version` in the command line to see if curl exists on your machine. If version details show, curl exists. If you see `command not found: curl`, download and install it. For more details, visit the curl download page as https://curl.se/download.html.
+
+2. Sign up for an API key at https://explore.openaq.org. After signing up, find your API key in your settings. Use this key to authenticate requests.
+
+    :::caution
+    Treat your API key as you would a password. Do not share your API key with others. If your API key leaks, you can request a new one in your OpenAQ Explorer account.
+    :::
+
+3. Run the following `curl` command, including your API key in the `X-API-Key` header. Replace `YOUR-OPENAQ-API-KEY` with your API key, this placeholder value will not work.
+
+    ```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/locations/8118" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+    ```
+
+4. The JSON response will give you the data for location 8118. You have now used the OpenAQ API successfully.
+
+
+</Steps>
