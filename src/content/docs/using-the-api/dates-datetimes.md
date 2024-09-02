@@ -16,7 +16,7 @@ means a time stamp for an hourly measurement 03:00 represents the data from
 
 When using dates with the OpenAQ API, it's important to understand that they
 represent the start of a time period. For example, a date like 2024-01-01
-represents the January 1st, 2024, and a year like 2024-01-01 represents the that
+represents January 1st, 2024, and a year like 2024-01-01 represents the
 calendar year, 2024. This contrasts with how datetimes are handled in the
 system, where they represent the end of a time period. In other words, while a
 date marks the start of a specific day or year, a datetime indicates when that
