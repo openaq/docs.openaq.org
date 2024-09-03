@@ -5,10 +5,10 @@ title: Rate limits
 OpenAQ limits the number of API requests you can make in a set time to ensure
 fair access for all users and prevent overuse.
 
-If you exceed this limit, you will receive a 429 HTTP status code indicating
-“Too Many Requests.” To continue, wait until the next rate limit period starts
-as described in OpenAQ’s rate limit policy. Avoid making more requests during
-this time to prevent further errors.
+If a rate limit is exceeded, the API returns a 429 "Too many request" HTTP status
+code. To continue, wait until the next rate limit period starts as described in
+OpenAQ’s rate limit policy. Avoid making more requests during this time to 
+prevent further errors.
 
 :::caution
 Exceeding API rate limits repeatedly can lead to either a temporary or permanent

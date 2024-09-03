@@ -42,6 +42,8 @@ data on a global scale.
 To ensure this is clearly represented in results, the API returns a datetime
 object which includes both UTC time and local time.
 
+TODO explain `timezone key`
+
 ```json
  {
     "utc": "2019-07-11T20:00:00Z",

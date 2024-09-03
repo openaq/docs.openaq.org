@@ -4,7 +4,7 @@ title: Errors
 
 The OpenAQ API uses standard HTTP status codes to indicate the outcome of API
 requests, whether successful or erroneous. A successful request is accompanied
-by a 200 OK status code that confirms the operation was completed as expected.
+by a 200 "OK" status code that confirms the operation was completed as expected.
 In cases of errors, the API responds with specific status codes that signify
 different types of issues. These codes enable developers to quickly
 understand and address any problems that arise when using the API.

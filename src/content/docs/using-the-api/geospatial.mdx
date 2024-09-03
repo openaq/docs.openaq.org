@@ -7,7 +7,8 @@ import Map from '../../../components/Map.astro';
 The OpenAQ API provides two methods for making geospatial queries: bounding box
 and point and radius. Each provides a method for selecting coordinate points
 that intersect with a geographic area. Choose only one of these two methods
-at a time. If both queries appear in a URL, the API returns an HTTP 422 error.
+at a time. If both queries appear in a URL, the API returns an HTTP 422
+"Unprocessable Content" error.
 
 ## Bounding box
 
@@ -21,10 +22,11 @@ the longitude and Y is latitude.
 
 #### Conditions
 
-* If `bbox` coordinate values outside the bounds of WGS84, -180,-90,180,90,
-appear in the query the API returns an HTTP 422 error.
-* if `bbox` appears in the query with either the `coordinates` or `radius`, or
-both, query parameters, the API returns an HTTP 422 error.
+* If coordinate values used with `bbox` query parameter are outside the bounds
+of WGS84, (-180,-90,180,90), the API returns an HTTP 422 "Unprocessable Content"
+error.
+* If `bbox` appears in the query with the `coordinates` or `radius` query
+parameters, the API returns an HTTP 422 "Unprocessable Content"  error.
 
 import bboxGeoJson from '../../../data/bbox.json';
 
@@ -35,7 +37,7 @@ could looks something like this.
 
 `?bbox=5.488869,-0.396881,5.732144,-0.021973`
 
-This bounding box query can be represented as the following polygon
+This bounding box query can be represented as the following polygon:
 
 <Map
   latitude={5.610519}
@@ -51,7 +53,7 @@ The point and radius query allows for searching for features within a distance
 of a point. This can be helpful for findby nearby features to a particular 
 place. 
 
-THe Point and radius query for the OpenAQ API uses the `coordinates` and 
+The point and radius query for the OpenAQ API uses the `coordinates` and 
 `radius` query parameters together. The `coordinates` parameter take a comma
 delimited coordinate pair in WGS84 ([EPSG4326](https://epsg.io/4326)) 
 coordinates in the form, Y,X or latitude,longitude. The `radius` parameter is 
@@ -60,13 +62,15 @@ the search distance from the coordinate pair in meters, with a maximum value of
 
 #### Conditions
 
-* If coordinate values outside the bounds of WGS84, -180,-90,180,90, appear in 
-the query the API returns an HTTP 422 error. 
-* If the `coordinates` parameter
-appears without the `radius` parameter, or _vice versa_, the API returns an 
-HTTP 422 error. 
+* If coordinate values used with `coordinates` query parameter are outside the 
+bounds of WGS84, (-180,-90,180,90), the API returns an HTTP 422 "Unprocessable
+Content" error.
+* If the `coordinates` parameter appears without the `radius` parameter, or
+_vice versa_, the API returns an HTTP 422 "Unprocessable Content" error. 
+* If `coordinates` and `radius` appear in the query with the `bbox` query
+parameter, the API returns an HTTP 422 "Unprocessable Content" error.
 * If the `radius` parameter value exceeds 25000, is 0, or is negative, the API 
-returns an HTTP 422 error.
+returns an HTTP 422 "Unprocessable Content" error.
 
 ### Example
 

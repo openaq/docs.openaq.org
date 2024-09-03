@@ -36,4 +36,4 @@ requests and ensures they are processed.
 * Secure Transmission: Use HTTPS for all requests. HTTP requests will be
 rejected.
 * Required Authentication: Requests without a valid API key will be denied and
-will return an HTTP 401 error.
+will return an HTTP 401 "Unauthorized" error.
