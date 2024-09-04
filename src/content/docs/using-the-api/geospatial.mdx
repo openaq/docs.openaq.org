@@ -13,7 +13,7 @@ at a time. If both queries appear in a URL, the API returns an HTTP 422
 ## Bounding box
 
 A bounding box query identifies geographic features within a rectangular area
-defined by specific mininum and maximum longitude and latitude values.
+defined by specific minimum and maximum longitude and latitude values.
 
 The bounding box query parameter for the OpenAQ API is `bbox`. This parameter
 takes a comma delimited list of 4 WGS84 ([EPSG4326](https://epsg.io/4326))
@@ -22,7 +22,7 @@ the longitude and Y is latitude.
 
 #### Conditions
 
-* If coordinate values used with `bbox` query parameter are outside the bounds
+* If coordinate values used with the `bbox` query parameter are outside the bounds
 of WGS84, (-180,-90,180,90), the API returns an HTTP 422 "Unprocessable Content"
 error.
 * If `bbox` appears in the query with the `coordinates` or `radius` query
