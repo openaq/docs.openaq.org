@@ -42,11 +42,12 @@ data on a global scale.
 To ensure this is clearly represented in results, the API returns a datetime
 object which includes both UTC time and local time.
 
-TODO explain `timezone key`
-
 ```json
  {
     "utc": "2019-07-11T20:00:00Z",
     "local": "2019-07-11T14:00:00-06:00"
 }
 ```
+
+The OpenAQ API provides the timezone ID string for a given monitoring location
+under the `timezone` key. This follows the tzid in the <a href="https://www.iana.org/time-zones" target="_blank" rel="noreferrer noopener">Time Zone Database</a>
