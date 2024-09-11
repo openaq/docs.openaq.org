@@ -4,15 +4,39 @@ title: About the API
 
 The OpenAQ API provides open access to global air quality data, following REST
 principles with resource-oriented URLs, standard HTTP response codes, and
-JSON-formatted responses. You can retrieve real-time and historical measurements
-for criteria pollutants, including particulate matter (PM<sub>2.5</sub>,
-PM<sub>10</sub>), ozone (O<sub>3</sub>), and nitrogen dioxide (NO<sub>2</sub>),
-sulfur dioxide (SO<sub>2</sub>), among others. The API also hosts data on
-additional pollutants from various sources.
+JSON-formatted responses. OpenAQ focuses on criteria air pollutants, primarily
+aggregating PM<sub>2.5</sub>, PM<sub>10</sub>, SO<sub>2</sub>, NO<sub>2</sub>,
+CO, O<sub>3</sub>, BC, RH & T measurement data. For a limited set of locations,
+we have data for PM<sub>1</sub>, PM<sub>4</sub>, CO<sub>2</sub>, NO,
+NO<sub>x</sub>, CH<sub>4</sub> & UFP.
 
-All data accessed through the API is public, reinforcing OpenAQ’s commitment to
-transparency and its mission to provide universal access to air quality data for
-a healthier world.
+All data accessed through the API is public. However, you are responsible for
+complying with applicable third-party terms. Please see our Terms of Use for
+very important information on intellectual property, allowable and considerate
+use, and more.
 
 To get started, explore the available endpoints and consult the documentation
 for guidance.
+
+---
+
+This repository of global air quality data is brought to you by
+[OpenAQ](https://openaq.org/#/), a nonprofit organization founded in the U.S.
+OpenAQ was the first to aggregate ground-level ambient air quality data on an
+open-source platform. We provide unique value due to a combination of attributes
+that make these data easily accessible, interoperable, interpretable and
+actionable. We:
+
+* harmonize the data into a single, uniform format so that they are easily
+comparable  
+* share the data in physical units rather than as an air quality index  
+* host near real-time and historical data  
+* share “metadata” (the data that provides the context for individual data
+points)  
+* make the data available programmatically via an API  
+* keep the underlying data-fetching software fully open  
+* provide tools for users of all abilities to access and use the data
+
+If you value this service, please consider making a
+[donation](https://secure.givelively.org/donate/openaq-inc/) to sustain the
+OpenAQ platform far into the future.

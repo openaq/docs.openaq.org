@@ -28,20 +28,25 @@ effectively.
     <tr>
       <td style="white-space: nowrap;"><code>x-ratelimit-used</code></td>
       <td>Shows the number of requests that have been made during the current
-      rate limit period. It helps users track their usage and avoid exceeding
-      limits.</td>
+      rate limit period. This header helps users track their usage and avoid
+      exceeding limits.</td>
     </tr>
     <tr>
       <td style="white-space: nowrap;"><code>x-ratelimit-reset</code></td>
-      <td>Provides a timestamp indicating when the rate limit period will reset. Users can use this information to plan when they can start making requests again.</td>
+      <td>Provides a timestamp indicating when the rate limit period will reset.
+      This header helps users plan when to start making requests again.</td>
     </tr>
     <tr>
       <td style="white-space: nowrap;"><code>x-ratelimit-limit</code></td>
-      <td>Specifies the maximum number of requests allowed within the current rate limit period. It sets the upper bound for the number of requests a user can make.</td>
+      <td>Specifies the maximum number of requests allowed within the current
+      rate limit period. This header helps users understand the upper bound for 
+      the number of requests they can make.</td>
     </tr>
     <tr>
       <td style="white-space: nowrap;"><code>x-ratelimit-remaining</code></td>
-      <td>Indicates the number of requests remaining before reaching the rate limit. Monitoring this helps users avoid hitting the limit and encountering rate limit errors.</td>
+      <td>Indicates the number of requests remaining before reaching the rate
+      limit. This header helps users avoid hitting the limit and encountering
+      rate limit errors.</td>
     </tr>
   </tbody>
 </table>
