@@ -1,6 +1,7 @@
 ---
 title: Geospatial queries
 ---
+import { Icon } from '@astrojs/starlight/components';
 
 import Map from '../../../components/Map.astro';
 
@@ -18,7 +19,7 @@ be helpful for finding features within arbitrary geographic areas.
 
 The bounding box query parameter for the OpenAQ API is `bbox`. This parameter
 takes a comma delimited list of 4 WGS84 (<a href="https://epsg.io/4326" 
-target="_blank" rel="noopener noreferrer">EPSG4326</a>)
+target="_blank" rel="noopener noreferrer" style="display: inline-flex;">EPSG:4326<Icon name="external"/></a>)
 coordinates in the form minimum X, minimum Y, maximum X, maximum Y, where X is 
 the longitude and Y is latitude.
 

@@ -6,7 +6,7 @@ import starlightOpenAPI, {
 
 export default defineConfig({
 	site: 'https://openaq.github.io',
-	base: 'docs.openaq.org',
+	// base: 'docs.openaq.org',
   integrations: [
     starlight({
       title: 'OpenAQ Docs',
@@ -80,6 +80,9 @@ export default defineConfig({
         {
           label: 'How-to guides',
           items: [
+            { label: 'Query locations by attributes', slug: 'guides/query-locations' },
+            { label: 'Query measurements', slug: 'guides/query-measurements' },
+            { label: 'Get latest values', slug: 'guides/get-latest-values' },
             {
               label: 'Advanced',
               items: [

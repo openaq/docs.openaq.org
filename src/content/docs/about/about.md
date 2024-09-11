@@ -15,6 +15,9 @@ complying with applicable third-party terms. Please see our Terms of Use for
 very important information on intellectual property, allowable and considerate
 use, and more.
 
+This documentation guide covers the OpenAQ API version 3. OpenAPI reference
+documentation for version 1 and 2 is still available in the [reference](/api)
+section but all other content in this guide pertains to version 3.
 To get started, explore the available endpoints and consult the documentation
 for guidance.
 

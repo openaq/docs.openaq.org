@@ -13,6 +13,8 @@ commercial use, modifications, or redistribution are allowed. This resource
 helps users understand the legal conditions under which they can use the data,
 ensuring compliance with various licensing requirements.
 
+The key fields for indentifying a license in OpenAQ are:
+
 * License ID: A unique identifier for each license.
 * Name: The name of the license.
 * Commercial Use Allowed: Indicates whether the license permits the use of data for commercial purposes.
@@ -21,3 +23,33 @@ ensuring compliance with various licensing requirements.
 * Modification Allowed: Shows if users can alter the data.
 * Redistribution Allowed: Indicates whether users can distribute the data.
 * Source URL: Provides a link to the official license terms for further details.
+
+
+## Example response payload
+
+`https://api.openaq.org/v3/licenses/41`
+
+
+```json
+{
+    "meta": {
+        "name": "openaq-api",
+        "website": "/",
+        "page": 1,
+        "limit": 100,
+        "found": 1
+    },
+    "results": [
+        {
+            "id": 41,
+            "name": "CC BY 4.0 DEED",
+            "commercialUseAllowed": true,
+            "attributionRequired": true,
+            "shareAlikeRequired": true,
+            "modificationAllowed": true,
+            "redistributionAllowed": true,
+            "sourceUrl": "https://creativecommons.org/licenses/by/4.0/"
+        }
+    ]
+}
+```
