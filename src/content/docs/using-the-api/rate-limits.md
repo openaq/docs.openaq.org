@@ -1,5 +1,6 @@
 ---
 title: Rate limits
+description: Understand OpenAQ API rate limits to ensure fair access and avoid errors. Learn how rate limit headers track your usage, reset times, and remaining requests. Exceeding limits can result in a temporary or permanent ban.
 ---
 
 OpenAQ limits the number of API requests you can make in a set time to ensure

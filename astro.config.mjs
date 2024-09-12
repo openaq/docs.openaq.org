@@ -6,7 +6,7 @@ import starlightOpenAPI, {
 
 export default defineConfig({
 	site: 'https://openaq.github.io',
-	base: 'docs.openaq.org',
+	// base: 'docs.openaq.org',
   integrations: [
     starlight({
       title: 'OpenAQ Docs',
@@ -25,6 +25,9 @@ export default defineConfig({
           },
         },
       ],
+      components: {
+        Head: './src/components/Head.astro',
+      },
       social: {
         github: 'https://github.com/openaq',
         slack:

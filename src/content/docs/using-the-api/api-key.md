@@ -1,5 +1,6 @@
 ---
 title: API Key
+description: Learn how to obtain, manage, and use your OpenAQ API key to access air quality data. Secure your API key, include it in requests, and ensure safe transmission with HTTPS. Unauthorized requests without a valid API key will be denied.
 ---
 
 The OpenAQ API uses API keys to authenticate requests and manage access. These
