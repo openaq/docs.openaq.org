@@ -9,8 +9,8 @@ remains available and responsive for all users.
 ## Managing Your API Key
 
 Sign up at the [OpenAQ Explorer](https://explore.openaq.org) to get your API
-key. You can access and rotate your key from the Explorer account settings page
-[https://explore.openaq.org/account](https://explore.openaq.org/account).
+key. You can access and rotate your key from the OpenAQ Explorer account
+settings page [https://explore.openaq.org/account](https://explore.openaq.org/account).
 
 :::caution
 Treat your API key as you would a password. Do not share your API key with
@@ -24,7 +24,7 @@ Include your API key in the `X-API-Key` header of each request. For example:
 
 ```sh
 curl --request GET \
---url "https://api.github.com/v3/locations/2178" \
+--url "https://api.openaq.org/v3/locations/2178" \
 --header "X-API-Key: YOUR-OPENAQ-API-KEY" 
 ```
 
