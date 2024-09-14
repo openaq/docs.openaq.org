@@ -47,3 +47,14 @@ datetime object which includes both UTC time and local time.
 
 The OpenAQ API provides the timezone ID string for a given monitoring location
 under the `timezone` key. This follows the tzid in the <a href="https://www.iana.org/time-zones" target="_blank" rel="noreferrer noopener">Time Zone Database</a>
+
+import Map from '../../../components/Map.astro';
+import timezones from '../../../data/tz.json';
+
+<Map
+  latitude={20}
+  longitude={10}
+  zoom={0.4}
+  container={'tz-map'}
+  geojson={JSON.stringify(timezones)}
+/>
