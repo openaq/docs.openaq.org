@@ -8,19 +8,24 @@ for selecting and understanding the different air quality metrics available for
 analysis.
 
 ## Purpose and Use
-The parameters resource helps users identify and understand the various air
-quality measurements provided by the OpenAQ API. It details each parameter’s
-name, units, and description, which supports users in choosing the relevant
-metrics for their air quality analysis and monitoring.
 
-* ID: A unique identifier for each parameter.
-* Name: The internal name used to reference the parameter in the API.
-* Units: The unit of measurement for the parameter (e.g., µg/m³ for mass
-concentration).
-* Display Name: A user-friendly name for the parameter.
-* Description: A brief explanation of what the parameter measures.
+The parameters resource helps users identify and understand the various air
+quality parameters provided by the OpenAQ API. It details each parameter’s name,
+units, and description, which supports users in choosing the relevant metrics
+for their air quality analysis and monitoring.
+
+Key fields:
+
+- id: A unique identifier for each parameter.
+- name: The internal name used to reference the parameter in the API.
+- units: The unit of measurement for the parameter (e.g., µg/m³ for mass
+  concentration).
+- displayName: A user-friendly label for the parameter.
+- description: A brief explanation of what the parameter measures.
 
 ## Example reponse payload
+
+`https://api.openaq.org/v3/parameters/2`
 
 ```json
 {

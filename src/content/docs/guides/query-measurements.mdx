@@ -1,3 +1,22 @@
 ---
-title: Query locations in a bounding box 
+title: Query sensor measurements
 ---
+
+
+
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/sensors/3917/measurements" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+
+
+
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/sensors/3917/days/yearly" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```

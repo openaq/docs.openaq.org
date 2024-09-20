@@ -1,9 +1,28 @@
 ---
-title: Guide.
-description: A guide in my new Starlight docs site.
+title: Guide - Download a year of data for a location.
 ---
 
-import { Aside, Steps } from '@astrojs/starlight/components';
+:::note
+This tutorial uses the AWS command line interface (CLI) tool and assumes you are
+familiar with using the command line on your computer. See the [Quick start](aws/quick-start)
+to learn how to set up the AWS CLI for the OpenAQ bucket. 
+:::
 
+import { Aside } from '@astrojs/starlight/components';
+
+
+
+ Run the following command to copy all data from [location 2178](https://explore.openaq.org/locations/2178) during the year 2020 to a local directory named `data`:
+
+```sh
+aws s3 cp \
+--no-sign-request \
+--recursive \
+s3://openaq-data-archive/records/csv.gz/locationid=2178/year=2020/ \
+data
+```
+<Aside type="caution" title="Warning">
+This will download over 350 files to your system, roughly 1.5 MB of data.
+</Aside>
 
 

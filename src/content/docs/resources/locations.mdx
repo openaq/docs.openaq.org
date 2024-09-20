@@ -1,3 +1,40 @@
 ---
 title: Locations
 ---
+
+The locations resource in the OpenAQ API provides data on air quality stations.
+A location Various organizations, including government agencies and research
+institutions, manage these stations.
+
+## Purpose and Use
+
+The locations resource helps users find air quality stations in specific areas.
+It also shows who runs each station and what pollutants they measure. This helps
+users understand where the data comes from and which pollutants the station
+tracks.
+
+## Key fields:
+
+- id: A unique identifier for each location.
+- name: The name of the station.
+- country: The country where the station operates, including its ISO 3166-1
+  alpha 2 code and name. See the [Countries](countries) resource page for more
+  information.
+- provider: The organization or individual that facilitates sharing of data. See
+  the [Providers](providers) resource for more information.
+- owner: The organization or individual responsible for the station. See the
+  [Owners](owners) resource page for more information.
+- coordinates: The geographic poisition latitude and longitude of the station.
+  For mobile locations this will be the first geographic point measured.
+- instruments: A list of devices used at the location. See the
+  [Instruments](instruments) resource for more information.
+- sensors: A list of sensors that measure pollutants. See the [Sensors](sensors)
+  resource for more information.
+
+## Example reponse payload
+
+`https://api.openaq.org/v3/manufacturers/2`
+
+```json
+
+```

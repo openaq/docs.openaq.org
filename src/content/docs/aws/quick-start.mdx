@@ -1,3 +1,60 @@
 ---
 title: Quick start
 ---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This guide shows how to fetch data from the OpenAQ API. As an example, we will
+retrieve location details for the "New Delhi" station in New Delhi, India, with
+OpenAQ location ID 8118.
+
+This tutorial uses the AWS ClI to make requests and assumes you are familiar with
+using the command line on your computer. The AWS CLI is not a
+requirement for using the Open Data on AWS bucket but it does provide easy
+access to AWS APIs necessary for communicating with the bucket.
+
+<Steps>
+
+1. Install and configure the AWS CLI from https://aws.amazon.com/cli/.
+Configure the AWS config file, found at $HOME/.aws/confg, with the 
+
+    ```ini
+    // .aws/config
+    [default]
+    region = us-east-1
+    output = json
+    ```
+    <Aside type="note" >
+
+    The AWS config file must be configured to the `us-east-1` to access the
+    bucket.
+    </Aside>
+
+2. Test that the AWS CLI is installed an configured by running `aws --version`
+in your command prompt. If version details show, `aws` exists and is configured
+on your system.
+
+3. Run the following command to copy a single day of data from
+[location 2178](https://explore.openaq.org/locations/2178) to a local directory
+named `data`:
+
+    ```sh
+    aws s3 cp \
+    --no-sign-request \
+    s3://openaq-data-archive/records/csv.gz/locationid=2178/year=2022/month=05/location-2178-20220503.csv.gz \
+    data
+    ```
+    <Aside type="note" >
+
+    `--no-sign-request` allows you to make the request without user credentials
+    </Aside>
+
+6. Now with the data file on your local system, unzip the file to reveal the csv
+file with the following command.
+
+    ```sh
+    tar -xvzf \
+    data/records/csv.gz/locationid=2178/year=2022/month=05/location-2178-20220503.csv.gz
+    ```
+
+</Steps>

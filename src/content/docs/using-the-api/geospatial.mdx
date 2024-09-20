@@ -23,7 +23,7 @@ target="_blank" rel="noopener noreferrer" style="display: inline-flex;">EPSG:432
 coordinates in the form minimum X, minimum Y, maximum X, maximum Y, where X is 
 the longitude and Y is latitude.
 
-#### Conditions
+### Conditions
 
 * If coordinate values used with the `bbox` query parameter are outside the bounds
 of WGS84 (-180,-90,180,90), the API returns an HTTP 422 "Unprocessable Content"
@@ -63,7 +63,7 @@ coordinates in the form Y,X or latitude,longitude. The `radius` parameter is
 the search distance from the coordinate pair in meters, with a maximum value of 
 25,000 (25km).
 
-#### Conditions
+### Conditions
 
 * If coordinate values used with `coordinates` query parameter are outside the 
 bounds of WGS84, (-180,-90,180,90), the API returns an HTTP 422 "Unprocessable

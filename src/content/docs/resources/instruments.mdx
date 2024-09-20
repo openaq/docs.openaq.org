@@ -1,3 +1,37 @@
 ---
 title: Instruments
 ---
+
+The instruments resource in the OpenAQ API provides information about air
+quality measuring devices. These devices gather data for different locations and
+are linked to various organizations, including government bodies, universities,
+and private companies. Each instrument has details such as its name, type, and
+the company that made it.
+
+## Purpose and Use
+
+The instruments resource helps users find and learn about the devices gathering
+air quality data. This resource also highlights whether a device is used for
+official air monitoring. By using the information, users can understand what
+kind of devices gather data, which is useful when analyzing the reliability and
+scope of the data.
+
+## Key fields:
+
+- id: A unique identifier for each instrument in the system.
+- name: The name of the device (e.g., "Clarity Node-S" or "BAM 1020").
+- isMonitor: A field showing if the device is used for official monitoring.
+- manufacturer: Details about the company or organization that made the device,
+  including its ID and name. See the [Manufacturers](resources/locations)
+  resource page for more information.
+
+These fields allow users to identify the devices behind the data they analyze,
+offering more context about the air quality information on the platform.
+
+## Example reponse payload
+
+`https://api.openaq.org/v3/locations/2178/latest`
+
+```json
+
+```

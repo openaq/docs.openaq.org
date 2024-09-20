@@ -1,3 +1,47 @@
 ---
 title: Providers
 ---
+
+The providers resource in the OpenAQ API gives details about the entities that
+supply air quality data to the platform. These providers may use APIs, websites,
+or other means to share their data with OpenAQ, ensuring access to air quality
+information from various sources.
+
+## Purpose and Use
+
+The providers resource helps users identify the organizations contributing air
+quality data to the platform. By understanding who supplies the data, users can
+assess the data's origins, which is useful for evaluating its reliability and
+scope. Providers can include governmental agencies, research organizations, or
+private companies.
+
+## Key fields:
+
+- id: A unique identifier for each provider.
+- name: The name of the provider.
+- sourceName: The internal name used for the data source.
+- exportPrefix: A label used when exporting data to AWS Open Data bucket.
+- datetimeAdded: The date the provider was added to the OpenAQ platform,
+  provided in UTC and local time. See
+  [Dates, times and timezones](using-the-api/dates-datetimes) for more
+  information.
+- datetimeFirst: The datetime of the first measurement available in OpenAQ from
+  the provider, provided in UTC and local time See
+  [Dates, times and timezones](using-the-api/dates-datetimes) for more
+  information.
+- datetimeLast: The datetime of the last measurement available in OpenAQ from
+  the provider. See [Dates, times and timezones](using-the-api/dates-datetimes)
+  for more information.
+- parameters: The list of pollutants and environmental parameters available from
+  the provider. See the [Parameters](parameters) resource page for more
+  information.
+- bbox: The geographic bounds (bounding box) for which the provider's data
+  covers in form X minimum, Y mininum, X maximum, Y maximum.
+
+## Example response payload
+
+`https://api.openaq.org/v3/providers/`
+
+```json
+
+```

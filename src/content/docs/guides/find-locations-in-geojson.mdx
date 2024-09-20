@@ -1,0 +1,77 @@
+---
+title: Query locations with a GeoJSON polygon
+---
+
+import Map from '../../../components/Map.astro';
+import losAngelesBounds from '../../../data/losAngelesBounds.json';
+import labbox from '../../../data/labbox.json';
+
+This guide shows you how to find monitoring locations via the OpenAQ API within
+an arbitrary GeoJSON polygon.
+
+The OpenAQ API does not have a direct method for accepting polygon coordinates
+for complex geospatial queries. The API does provide a bounding box query
+parameter `bbox`. By computing the bounding box of a GeoJSON polygon we can
+query the OpenAQ API to a specific area, then filter out any extra results in
+post-processing.
+
+<Map
+  latitude={34.0212}
+  longitude={-118.4118}
+  zoom={8.5}
+  container={'los-angeles-map'}
+  geojson={JSON.stringify(losAngelesBounds)}
+/>
+
+Download the [Los Angeles city boundary file](/losAngelesBounds.json).
+
+Use the `ogrinfo` tool to find the bounding box coordinates of the Los Angeles
+city boundaries polygon. Run the following command in your terminal.
+
+```sh
+ogrinfo -ro -al -geom=SUMMARY losAngelesBounds.json \
+ | grep "Extent:"\
+ | awk -F '[(,)]' '{print $2, $3, $5, $6}'
+```
+
+`ogrinfo` with `grep` and `awk` tools can return the sequence of values. These
+values mininum X (longitude) value , mininum Y (latitude) value , maximum X
+(longitude) value and maximum Y (latitude) value.
+
+```sh
+-118.668153  33.703935 -118.155358  34.337306
+```
+
+This bounding box can be represented as polygon that looks like this:
+
+<Map
+  latitude={34.0212}
+  longitude={-118.4118}
+  zoom={8.5}
+  container={'los-angeles-bbox-map'}
+  geojson={JSON.stringify(labbox)}
+/>
+
+Replace `YOUR-OPENAQ-API-KEY` with your API key (placeholder value will not
+work).
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/locations?bbox=-118.668153,33.703935,-118.155358,34.337306&limit=1000" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+```json
+{
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 1000,
+    "found": 283
+  },
+  "results": [
+    ...
+  ]
+}
+```

@@ -1,3 +1,33 @@
 ---
 title: Manufacturers
 ---
+
+The manufacturers resource in the OpenAQ API provides information on the
+companies that produce air quality monitoring instruments. It connects
+manufacturers to the devices they create, helping users identify the source of
+the equipment used in air quality monitoring.
+
+## Purpose and Use
+
+The manufacturers resource helps users find details about the companies behind
+air quality monitoring devices. By linking manufacturers to specific
+instruments, users can better understand the origins of the equipment collecting
+air quality data. This is useful for assessing the reliability and background of
+the instruments used for monitoring.
+
+## Key fields:
+
+- id: A unique identifier for each manufacturer.
+- name: The name of the manufacturer.
+- instruments: A list of instruments produced by the manufacturer,
+  including their ID and name. See the [Instruments](instruments)
+  resource page for more information.
+
+
+## Example reponse payload
+
+`https://api.openaq.org/v3/manufacturers/2`
+
+
+```json
+```

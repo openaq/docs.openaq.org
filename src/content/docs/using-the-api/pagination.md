@@ -2,11 +2,11 @@
 title: Pagination
 ---
 
-Air quality monitoring produces a significant volume of data. Therefore, OpenAQ API
-uses pagination to return a subset of the results. By default, a request will
-return a maximum of 100 results in a single page. This limit can be adjusted
-using the `limit` query parameter, up to a maximum of 1,000 results per page,
-i.e., `limit=1000`. Using this limit in conjunction with the `page` query
+Air quality monitoring produces a significant volume of data. Therefore, the
+OpenAQ API uses pagination to return a subset of the results. By default, a
+request will return a maximum of 100 results in a single page. This limit can be
+adjusted using the `limit` query parameter, up to a maximum of 1,000 results per
+page, i.e., `limit=1000`. Using this limit in conjunction with the `page` query
 parameter, you can access a large result set across multiple requests.
 
 The total number of records in a result set is available in the JSON response

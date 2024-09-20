@@ -1,18 +1,25 @@
 ---
-import type { Props } from '@astrojs/starlight/props'
-import Default from '@astrojs/starlight/components/Head.astro'
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Head.astro';
 
-// Get the URL of the generated image for the current page using its
-// ID and replace the file extension with `.png`.
 const ogImageUrl = new URL(
   `/og/${Astro.props.id.replace(/\.\w+$/, '.png')}`,
-  Astro.site,
-)
+  Astro.site
+);
 ---
 
-<!-- Render the default <Head/> component. -->
 <Default {...Astro.props}><slot /></Default>
-
-<!-- Render the <meta/> tags for the Open Graph images. -->
+<script
+  is:inline
+  defer
+  data-domain="docs.openaq.org"
+  src="https://plausible.io/js/script.outbound-links.js"></script>
+<script is:inline>
+  window.plausible =
+    window.plausible ||
+    function () {
+      (window.plausible.q = window.plausible.q || []).push(arguments);
+    };
+</script>
 <meta property="og:image" content={ogImageUrl} />
 <meta name="twitter:image" content={ogImageUrl} />

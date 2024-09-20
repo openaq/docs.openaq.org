@@ -13,43 +13,44 @@ commercial use, modifications, or redistribution are allowed. This resource
 helps users understand the legal conditions under which they can use the data,
 ensuring compliance with various licensing requirements.
 
-The key fields for indentifying a license in OpenAQ are:
+## Key fields:
 
-* License ID: A unique identifier for each license.
-* Name: The name of the license.
-* Commercial Use Allowed: Indicates whether the license permits the use of data for commercial purposes.
-* Attribution Required: Specifies if users must give credit to the original source when using the data.
-* ShareAlike Required: States whether derivative works must be licensed under the same terms as the original.
-* Modification Allowed: Shows if users can alter the data.
-* Redistribution Allowed: Indicates whether users can distribute the data.
-* Source URL: Provides a link to the official license terms for further details.
-
+- id: A unique identifier for each license.
+- name: The name of the license.
+- commercialUseAllowed: Indicates whether the license permits the use of data
+  for commercial purposes.
+- attributionRequired: Specifies if users must give credit to the original
+  source when using the data.
+- shareAlikeRequired: States whether derivative works must be licensed under the
+  same terms as the original.
+- modificationAllowed: Shows if users can alter the data.
+- redistributionAllowed: Indicates whether users can distribute the data.
+- sourceUrl: Provides a link to the official license terms for further details.
 
 ## Example response payload
 
 `https://api.openaq.org/v3/licenses/41`
 
-
 ```json
 {
-    "meta": {
-        "name": "openaq-api",
-        "website": "/",
-        "page": 1,
-        "limit": 100,
-        "found": 1
-    },
-    "results": [
-        {
-            "id": 41,
-            "name": "CC BY 4.0 DEED",
-            "commercialUseAllowed": true,
-            "attributionRequired": true,
-            "shareAlikeRequired": true,
-            "modificationAllowed": true,
-            "redistributionAllowed": true,
-            "sourceUrl": "https://creativecommons.org/licenses/by/4.0/"
-        }
-    ]
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 100,
+    "found": 1
+  },
+  "results": [
+    {
+      "id": 41,
+      "name": "CC BY 4.0 DEED",
+      "commercialUseAllowed": true,
+      "attributionRequired": true,
+      "shareAlikeRequired": true,
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "sourceUrl": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ]
 }
 ```

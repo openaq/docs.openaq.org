@@ -1,3 +1,106 @@
 ---
 title: Sensors
 ---
+
+The sensors resource in the OpenAQ API provides details about individual air
+quality sensors that collect environmental data. Each sensor tracks a specific
+parameter, such as pollutants, and reports on their concentration over time.
+
+## Purpose and Use
+
+The sensors resource allows users to gain insights into the specific sensors
+used for collecting air quality data. By viewing sensor details, users can
+analyze the data's accuracy, time coverage, and the specific locations being
+monitored. This resource is essential for those who want to understand how air
+quality information is gathered and the reliability of the data.
+
+## Key Fields:
+
+- id: A unique identifier for each sensor.
+- name: The name of the sensor.
+- parameter: Information about the parameter measured, including the pollutant
+  name , units , and display name. See the [Parameters](parameters) resource
+  page for more information.
+- datetimeFirst: The datetime of the first measurement available in OpenAQ from
+  the sensor, provided in UTC and local time See
+  [Dates, times and timezones](using-the-api/dates-datetimes) for more
+  information.
+- datetimeLast: The datetime of the last measurement available in OpenAQ from
+  the sensor. See [Dates, times and timezones](using-the-api/dates-datetimes)
+  for more information.
+- coverage: Includes details about data completeness, such as the expected
+  number of measurements, actual counts, and the time period the data spans.
+- latest: The most recent recorded value and corresponding geographical
+  coordinates (latitude and longitude). See the [Latest](latest) resource page
+  for more information.
+- summary: Statistical summary about the values across the lifetime of the
+  sensor on OpenAQ, between `datetimeFirst` and `datetimeLast`, including
+  minimum, maximum, average values.
+
+## Example response payload
+
+`https://api.openaq.org/v3/sensors/3917`
+
+```json
+{
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 100,
+    "found": 1
+  },
+  "results": [
+    {
+      "id": 3917,
+      "name": "o3 ppm",
+      "parameter": {
+        "id": 10,
+        "name": "o3",
+        "units": "ppm",
+        "displayName": "O₃"
+      },
+      "datetimeFirst": {
+        "utc": "2016-03-06T20:00:00Z",
+        "local": "2016-03-06T13:00:00-07:00"
+      },
+      "datetimeLast": {
+        "utc": "2024-09-18T23:00:00Z",
+        "local": "2024-09-18T17:00:00-06:00"
+      },
+      "coverage": {
+        "expectedCount": 1,
+        "expectedInterval": "01:00:00",
+        "observedCount": 58447,
+        "observedInterval": "58447:00:00",
+        "percentComplete": 5844700.0,
+        "percentCoverage": 5844700.0,
+        "datetimeFrom": {
+          "utc": "2016-03-06T20:00:00Z",
+          "local": "2016-03-06T13:00:00-07:00"
+        },
+        "datetimeTo": {
+          "utc": "2024-09-18T23:00:00Z",
+          "local": "2024-09-18T17:00:00-06:00"
+        }
+      },
+      "latest": {
+        "datetime": {
+          "utc": "2024-09-18T23:00:00Z",
+          "local": "2024-09-18T17:00:00-06:00"
+        },
+        "value": 0.055,
+        "coordinates": {
+          "latitude": 35.1353,
+          "longitude": -106.584702
+        }
+      },
+      "summary": {
+        "min": 0.0,
+        "max": 0.109,
+        "avg": 0.03580498661195457
+      }
+    }
+  ]
+}
+```

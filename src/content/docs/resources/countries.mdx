@@ -11,9 +11,9 @@ The countries resource in the OpenAQ API lists countries in the data set and
 details the air quality parameters available for each. The countries resource 
 only include countries which have monitoring locations available in them in 
 OpenAQ. Countries are derived from the coordinates provided by the upstream 
-provider. OpenAQ does not use the same country label as reported by the upstream
-provider and may differ from the original data source, see the data disclaimer
-below.
+provider. OpenAQ may not use the same country label as reported by the upstream
+provider. OpenAQ uses the Natural Earth 10m dataset for country boundaries, see
+the [disclaimer](disclaimers/countries).
 
 ## Purpose and Use
 
@@ -31,9 +31,9 @@ trends.
   geojson={JSON.stringify(neCountriesGeoJSON)}
 />
 
-The key fields for indentifying a country in OpenAQ are:
+## Key fields:
 
-* id - the unique identifier used within the OpenAQ system for a particular 
+* id - the unique identifier used within the OpenAQ system for a
 country.
 * code - the ISO 3166-1 alpha 2 code for the country.
 * name - The English name of the country
@@ -103,7 +103,7 @@ country.
 ```
 
 :::caution[Disclaimer]
-OpenAQ labels moniroting locations with a country label based on the [Natural 
+OpenAQ labels monitoring locations with a country label based on the [Natural 
 Earth Admin 0](https://www.naturalearthdata.com/) 10m dataset v5.1.2. 
 These boundaries may not be able to correctly label every station and may 
 require manual or "fuzzy" matching due to the coarse precision of the data and 

@@ -2,7 +2,11 @@
 title: About Open Data on AWS
 description: A guide in my new Starlight docs site.
 ---
-For larger data queries, OpenAQ data can be directly accessed as gzipped csv (comma-separated values) files from the Open Data on AWS Program's S3 bucket. Data are updated by location every 72 hours and organized to allow for filtering by country, location, year and month.
+For larger data queries, OpenAQ data can be directly accessed as gzipped csv
+(comma-separated values) files from the Open Data on AWS Program's S3 bucket.
+Data are updated by location every 72 hours and organized to allow for
+filtering by location, year and month.
+
 
 ## Bucket structure
 
@@ -42,7 +46,7 @@ The prefix structure follows the [Apache Hive partitioning format](https://athen
 
  `records`
 
-Top level directory containing individual records from sensors.
+Top level directory containing individual records from locations.
 
  `file format`
 
@@ -50,15 +54,15 @@ The file format of the data. Currently only `csv.gz` (gzip csv)
 
  `locationid={locationid}`
 
-The OpenAQ id for the location, a numerical value, e.g. location_id=42
+The OpenAQ id for the location, a numerical value, e.g. `location_id=42`
 
  `year={year}`
 
-The four digit number of the year, e.g. year=2022
+The four digit number of the year, e.g. `year=2022`
 
 `month={month}`
 
-The zero padded two digit number of the month, e.g. month=02
+The zero padded two digit number of the month, e.g. `month=02`
 
 ## Measurement File
 
@@ -68,7 +72,7 @@ Measurements are stored as csv (comma-separated values) compressed with gzip (cs
 
 ### File structure
 
-Data is stored in [narrow](https://en.wikipedia.org/wiki/Wide_and_narrow_data#Narrow) format with the following columns: 
+Data are stored in [narrow](https://en.wikipedia.org/wiki/Wide_and_narrow_data#Narrow) format with the following columns: 
 
 | Column name | description                                                                                                    | example                   |
 | :---------- | :------------------------------------------------------------------------------------------------------------- | :------------------------ |
@@ -114,8 +118,11 @@ SNS ARN:
 arn:aws:sns:us-east-1:817926761842:openaq-data-archive-object_created
 ```
 
-To learn more about how to subscribe to SNS topics, view the [AWS SNS documentation](https://docs.aws.amazon.com/sns/latest/dg/sns-create-subscribe-endpoint-to-topic.html).
+To learn more about how to subscribe to SNS topics, view the
+[AWS SNS documentation](https://docs.aws.amazon.com/sns/latest/dg/sns-create-subscribe-endpoint-to-topic.html).
 
 ## Update frequency
 
-Files are written 72 hours after the end of day, i.e. 0:00 for the given location's timezone. Files may be retroactively patched if data are missing due to fetching error or from historical data scrape.
+Files are written 72 hours after the end of day, i.e. 0:00 for the given
+location's timezone. Files may be retroactively patched if data are missing due
+to fetching error or from historical data scrape.

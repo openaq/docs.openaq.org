@@ -1,3 +1,57 @@
 ---
 title: Latest
 ---
+
+The latest resource in the OpenAQ API provides the most recent air quality
+measurement from a sensor. Each record provides the measurement time, value,
+location coordinates, and sensor information. This resource helps users stay
+updated on current air quality at specific locations.
+
+## Purpose and Use
+
+The latest resource offers access to the newest air quality data from sensors in
+the OpenAQ system. It shows recent measurements and their geographic location,
+allowing users to track air quality trends quickly and make timely decisions.
+
+The latest resource is accessible through either a single [location](locations),
+showing latest values for all sensors available at that location, or by
+parameter, showing the latest value across all sensors that measure that
+parameter. e.g.:
+
+```url
+https://api.openaq.org/v3/locations/2178/latest
+```
+
+or
+
+```url
+https://api.openaq.org/v3/parameters/2/latest
+```
+
+:::note The latest value does not represent the most recent measurement ingested
+by OpenAQ for a given sensor, but instead represents the last measurement value
+in the series. Due to the nature of how some upstream providers report data,
+measurements are not necessarily reported in order. Polling latest resources for
+measurement values does not guarantee complete data coverage as measurements may
+be ingested out of their time series order and not show up as a "latest" value.
+:::
+
+## Key Fields
+
+- datetime: The time of the measurement, provided in UTC and local time. See
+  [Dates, times and timezones](using-the-api/dates-datetimes) for more
+  information.
+- value: the sensor measurement reading.
+- coordinates: The location in WGS84 latitude and longitude of the reading.
+- sensorsId: Unique ID for the sensor that took the reading. See the
+  [Sensors](resources/sensors) resource page for more information.
+- locationsId: Unique ID for the location where the sensor is situated. See the
+  [Locations](resources/locations) resource page for more information.
+
+## Example reponse payload
+
+`https://api.openaq.org/v3/locations/2178/latest`
+
+```json
+
+```
