@@ -8,7 +8,7 @@ import playformCompress from '@playform/compress';
 
 export default defineConfig({
     site: 'https://openaq.github.io',
-    // base: 'docs.openaq.org',
+    base: 'docs.openaq.org',
   integrations: [starlight({
     title: 'OpenAQ Docs',
     logo: {
