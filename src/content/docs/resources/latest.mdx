@@ -1,12 +1,14 @@
 ---
 title: Latest
 ---
+import { Aside } from '@astrojs/starlight/components';
+
 
 The Latest resource in the OpenAQ API provides the most recent air quality
 measurement from a sensor. Each record provides the measurement time, value,
 location coordinates, and sensor information.
 
-:::note  
+<Aside type="note">
 The latest value does not represent the most recent measurement ingested by
 OpenAQ for a given sensor, but instead represents the last measurement value in
 the series. Due to the nature of how some upstream providers report data,
@@ -14,7 +16,7 @@ measurements are not necessarily reported in order. Polling latest resources for
 measurement values does not guarantee complete data coverage as measurements may
 be ingested out of their time series order and not show up as a "latest"
 value.  
-:::
+</Aside>
 
 ## Purpose and Use
 
@@ -37,13 +39,15 @@ or
 https://api.openaq.org/v3/parameters/2/latest
 ```
 
-:::note The latest value does not represent the most recent measurement ingested
+<Aside type="note">
+
+The latest value does not represent the most recent measurement ingested
 by OpenAQ for a given sensor, but instead represents the last measurement value
 in the series. Due to the nature of how some upstream providers report data,
 measurements are not necessarily reported in order. Polling latest resources for
 measurement values does not guarantee complete data coverage as measurements may
 be ingested out of their time series order and not show up as a "latest" value.
-:::
+</Aside>
 
 ## Key Fields
 
