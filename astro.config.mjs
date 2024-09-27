@@ -127,8 +127,8 @@ export default defineConfig({
       },
     ],
   }),
-  , shield({})
-  , sitemap()
-  , robotsTxt()
+  // , shield({})
+  // , sitemap()
+  // , robotsTxt()
 ],
 });
