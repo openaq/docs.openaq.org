@@ -128,6 +128,8 @@ export default defineConfig({
   }), shield({
     sri: { hashesModule: modulePath },
   })
+  , sitemap()
+
   // , robotsTxt()
 ],
 });
