@@ -1,37 +1,28 @@
 ---
 title: Licenses
 ---
-
-The licenses resource in the OpenAQ API provides information about the licenses
-governing the use of data within the API.
+The Licenses resource in the OpenAQ API provides information about the licenses governing the use of data within the API.
 
 ## Purpose and Use
 
-The licenses resource lists the different licenses available for the data in the
-OpenAQ API. Each license details permissions and restrictions, such as whether
-commercial use, modifications, or redistribution are allowed. This resource
-helps users understand the legal conditions under which they can use the data,
-ensuring compliance with various licensing requirements.
+The Licenses resource lists the licenses that govern use of the data in OpenAQ. Each license details permissions and restrictions, such as whether attribution is required and whether commercial use, modifications, or redistribution are allowed. This resource helps users comply with any licensing requirements. As per OpenAQ’s Terms of Use, compliance is required. 
 
-## Key fields:
+## Key fields
 
-- id: A unique identifier for each license.
-- name: The name of the license.
-- commercialUseAllowed: Indicates whether the license permits the use of data
-  for commercial purposes.
-- attributionRequired: Specifies if users must give credit to the original
-  source when using the data.
-- shareAlikeRequired: States whether derivative works must be licensed under the
-  same terms as the original.
-- modificationAllowed: Shows if users can alter the data.
-- redistributionAllowed: Indicates whether users can distribute the data.
+- id: A unique identifier for each license.  
+- name: The name of the license.  
+- commercialUseAllowed: Indicates whether the license permits the use of data for commercial purposes.  
+- attributionRequired: Specifies whether users must give credit to the original source when using the data.  
+- shareAlikeRequired: States whether derivative works must be licensed under the same terms as the original.  
+- modificationAllowed: Shows whether users can alter the data.  
+- redistributionAllowed: Indicates whether users can distribute the data.  
 - sourceUrl: Provides a link to the official license terms for further details.
 
 ## Example response payload
 
 `https://api.openaq.org/v3/licenses/41`
 
-```json
+```
 {
   "meta": {
     "name": "openaq-api",

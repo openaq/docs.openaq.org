@@ -2,22 +2,89 @@
 title: Measurements
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+
+The measurements resources in the OpenAQ API provides measurement values of from sensors.
+
+## Purpose and Use
+
+The manufacturers resource helps users find details about the companies behind
+air quality monitoring devices. By linking manufacturers to specific
+instruments, users can better understand the origins of the equipment collecting
+air quality data. This is useful for assessing the reliability and background of
+the instruments used for monitoring.
+
+In addition to providing raw measurement values as reported by providers, the
+API provides options for rolling up data into different aggregation periods.
+
+
+
+### measurements
+
+The measurements resource represents the measurement value as reported by the
+upstream source
+
+### hours
+
+The hours resource is the hourly average (mean) value of measurements.
+
+<Aside type="note" >
+The vast majority of measurements on the OpenAQ platform are hourly values. In
+the case where the upstream reporting period is hourly, the `hours` resource and
+`measurements` resource will be the same.
+</Aside>
+
+### days
+
+The days resource is the daily average (mean), computed from the hourly average
+values from 01:00 to 0:00 in local time.
+
+### months
+
+The days resource is the daily average (mean), computed from the hourly average
+values from 01:00 to 0:00 in local time.
+
+### years
+
+The years resource is the yearly average (mean), computed from the hourly
+average values from January 01 at 01:00 to December 31 0:00 in local time.
+
+
+additional aggregation is avaialable based and can be based on the above data
+groups
+
+
+<Aside type="caution" >
+Aggregating from measurements, e.g. /v3/sensors/\{sensors_id\}/measurements/yearly,
+can be computationally slow and may not resolve, resulting in a timeout error.
+For most reliable results, limit queries to smaller time periods using the `date_from` and
+`date_to` query parameters. 
+</Aside>
+
+### hourly
+ 
+### daily
+
+<Aside type="note" >
+A call to the `/v3/sensors/{sensors_id}/hours/daily` is functionally the same as
+`/v3/sensors/{sensors_id}/days`. The days options should be the preferred
+resource.
+</Aside>
+
+### yearly
+
+## Key fields:
 
 ## Coverage
 
-When returning 
+When returning
 
 ## Summary
 
-
-
 ## Period
 
-
-
 ## Aggregation periods
-
-
 
 ### Hours
 
@@ -25,20 +92,72 @@ based on measurements
 
 ### Days
 
-based on hours 
+based on hours
 
 shrinkage to the mean
 
-central limit theorem 
+central limit theorem
 
-min max avg count and error_count are brought along from meausrements level 
+min max avg count and error_count are brought along from meausrements level
 
 ### Years
 
-based on hours 
+based on hours
 
-
-### days yearly 
+### days yearly
 
 shrinkage to the mean
 
+
+```json
+{
+    "meta": {
+        "name": "openaq-api",
+        "website": "/",
+        "page": 1,
+        "limit": 1000,
+        "found": ">1000"
+    },
+    "results": [
+        {
+            "value": 0.043,
+            "parameter": {
+                "id": 10,
+                "name": "o3",
+                "units": "ppm",
+                "displayName": null
+            },
+            "period": {
+                "label": "raw",
+                "interval": "01:00:00",
+                "datetimeFrom": {
+                    "utc": "2016-03-06T19:00:00Z",
+                    "local": "2016-03-06T12:00:00-07:00"
+                },
+                "datetimeTo": {
+                    "utc": "2016-03-06T20:00:00Z",
+                    "local": "2016-03-06T13:00:00-07:00"
+                }
+            },
+            "coordinates": null,
+            "summary": null,
+            "coverage": {
+                "expectedCount": 1,
+                "expectedInterval": "01:00:00",
+                "observedCount": 1,
+                "observedInterval": "01:00:00",
+                "percentComplete": 100.0,
+                "percentCoverage": 100.0,
+                "datetimeFrom": {
+                    "utc": "2016-03-06T19:00:00Z",
+                    "local": "2016-03-06T12:00:00-07:00"
+                },
+                "datetimeTo": {
+                    "utc": "2016-03-06T20:00:00Z",
+                    "local": "2016-03-06T13:00:00-07:00"
+                }
+            }
+        }
+    ]
+}
+```

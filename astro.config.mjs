@@ -1,14 +1,17 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightOpenAPI, {
-  openAPISidebarGroups,
-} from 'starlight-openapi';
+import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi';
+import { shield } from '@kindspells/astro-shield'
+import { resolve } from 'node:path'
 
-import playformCompress from '@playform/compress';
+import robotsTxt from 'astro-robots-txt';
+
+const rootDir = new URL('.', import.meta.url).pathname
+const modulePath = resolve(rootDir, 'src', 'generated', 'sriHashes.mjs')
 
 export default defineConfig({
-    site: 'https://openaq.github.io',
-    base: 'docs.openaq.org',
+  site: 'https://openaq.github.io',
+  // base: 'docs.openaq.org',
   integrations: [starlight({
     title: 'OpenAQ Docs',
     logo: {
@@ -49,8 +52,7 @@ export default defineConfig({
         label: 'About the API',
         items: [
           { label: 'About the API', slug: 'about/about' },
-          { label: 'Terms of use', slug: 'about/terms' }
-
+          { label: 'Terms of use', slug: 'about/terms' },
         ],
       },
       {
@@ -82,20 +84,9 @@ export default defineConfig({
         ],
       },
       {
-        label: 'How-to guides',
+        label: 'Examples',
         items: [
-          { label: 'Query locations by attributes', slug: 'guides/query-locations' },
-          { label: 'Query sensor measurements', slug: 'guides/query-measurements' },
-          { label: 'Get a locations latest values', slug: 'guides/get-latest-values' },
-          {
-            label: 'Advanced',
-            items: [
-              {
-                label: 'Query locations in a GeoJSON polygon',
-                slug: 'guides/find-locations-in-geojson',
-              },
-            ],
-          },
+          { label: 'Examples', slug: 'examples/examples' },
         ],
       },
       {
@@ -134,5 +125,7 @@ export default defineConfig({
         ],
       },
     ],
-  }), playformCompress()],
+  }), shield({
+    sri: { hashesModule: modulePath },
+  }), robotsTxt()],
 });

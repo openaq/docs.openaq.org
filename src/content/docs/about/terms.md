@@ -14,7 +14,8 @@ Please read these Terms carefully. By using the OpenAQ Platform or by sharing
 data on the OpenAQ Platform, you acknowledge that, without limitation or
 qualification, you have read, understood, and agreed to the Terms and any future
 modifications to the Terms and to the collection and use of your information as
-set forth in our [Privacy Policy]().
+set forth in our
+[Privacy Policy](https://docs.google.com/document/d/1h9rUHrup-QhLI1GXlOib-Ct5ZQlXdYaZb0l0oZjIMzg/edit?usp=sharing).
 
 OpenAQ reserves the right to modify these Terms without notice, in whole or in
 part, at our sole discretion. If we change these Terms, we will post the changes
@@ -35,17 +36,15 @@ If you do not accept these Terms of Use, do not use the OpenAQ Platform.
 For programmatic access to data on the OpenAQ Platform or to use certain
 features on OpenAQ Explorer, users must register for an API key and account.
 
-- Users must provide a valid email address during the registration process. This
-  email address must not be from a temporary or disposable email service.
+- Users must provide a valid name and valid email address during the
+  registration process. This email address must not be from a temporary or
+  disposable email service.
 
-- To maintain the integrity and fair usage of our services, each user is
-  permitted to register for only one API key. Multiple registrations by a single
-  user or entity are prohibited. This policy ensures equitable access to our
-  resources and prevents abuse or overconsumption of our services. Users found
-  to be in violation of this term may have all associated API keys revoked and
-  may face permanent suspension from our platform. We monitor usage patterns to
-  detect and prevent such activities, ensuring a balanced and fair environment
-  for all users.
+- An individual is permitted to register for only one API key. An entity may
+  have more than one user, and thus more than one API key, but may not use
+  multiple accounts to over-consume our services or otherwise abuse the system.
+  We monitor usage patterns to detect and prevent such activities, ensuring a
+  fair environment for all users.
 
 - As an account user, you acknowledge that you are responsible for all activity
   occurring under the use of your account. You are responsible for maintaining
@@ -75,7 +74,7 @@ to our hosted API for users found to be in violation of this clause. This
 provision does not limit the rights granted under the open-source license for
 the software itself, but governs the use of our hosted API service.
 
-## Intellectual Property and Attribution
+### Intellectual Property and Attribution
 
 OpenAQ aggregates air quality data from government agencies and other sources.
 We only aggregate data that, to the best of our knowledge, has been made
@@ -103,7 +102,7 @@ does not require it.
 Attribution to OpenAQ as the source data is also required when using OpenAQ
 services for accessing the data.
 
-## Considerate Use
+### Considerate Use
 
 You may not use the OpenAQ Platform in any manner which could damage, disable,
 overburden, or impair the Platform or interfere with any other party’s use and
@@ -112,13 +111,13 @@ agree not to, at OpenAQ’s sole discretion, use an unreasonable amount of
 bandwidth and not leave requests running in perpetuity if data is no longer
 needed.
 
-## Access to Higher Rate Limits
+### Access to Higher Rate Limits
 
 Anyone wishing to access OpenAQ Platform at rates higher than the documented
 rate limit must comply with the payment terms and API License and Services
 Agreement required by OpenAQ.
 
-## Disclaimer
+### Disclaimer
 
 IMPORTANT: Although OpenAQ strives to make the aggregated data true to its
 source and as useful as possible, we cannot guarantee its accuracy or
@@ -135,18 +134,18 @@ the OpenAQ API with or without notice at any time. You agree that OpenAQ shall
 not be liable to your or to any third party for any modification, suspension or
 discontinuance of the OpenAQ API.
 
-## Code of Conduct
+### Code of Conduct
 
 By using the OpenAQ Platform you acknowledge and agree to abide by the
 principles in our
 [Code of Conduct](https://github.com/openaq/openaq-info/blob/main/CODE-OF-CONDUCT.md).
 
-## Violation of Terms of Use for Users
+### Violation of Terms of Use for Users
 
 If a user is found to be in violation of the Terms of Use, OpenAQ reserves the
 right to suspend or terminate access to the platform.
 
-# OpenAQ Terms and Conditions for Data Publishers
+## OpenAQ Terms and Conditions for Data Publishers
 
 OpenAQ aggregates third-party air quality data that is in the public domain or
 has been shared freely by data publishers who choose to share their data with

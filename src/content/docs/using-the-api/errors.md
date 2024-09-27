@@ -24,6 +24,6 @@ understand and address any problems that arise when using the API.
         <tr><td>429</td><td>Too Many Requests</td><td>The number of requests
         exceeded the rate limit for the given time period.</td></tr>
         <tr><td>500, 502, 503, 504</td><td>Server errors</td><td>Something has
-        failed on the side of OpenAQ services. Contact us.</td></tr>
+        failed on the side of OpenAQ services. Contact us on <a href="https://join.slack.com/t/openaq/shared_invite/zt-yzqlgsva-v6McumTjy2BZnegIK9XCVw">Slack</a>.</td></tr>
     </tbody>
 </table>
