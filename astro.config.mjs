@@ -127,5 +127,7 @@ export default defineConfig({
     ],
   }), shield({
     sri: { hashesModule: modulePath },
-  }), robotsTxt()],
+  })
+  // , robotsTxt()
+],
 });
