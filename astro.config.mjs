@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi';
 import { shield } from '@kindspells/astro-shield'
 import { resolve } from 'node:path'
+import sitemap from '@astrojs/sitemap';
 
 import robotsTxt from 'astro-robots-txt';
 
