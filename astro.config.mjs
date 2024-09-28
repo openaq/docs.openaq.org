@@ -12,7 +12,7 @@ const modulePath = resolve(rootDir, 'src', 'generated', 'sriHashes.mjs')
 
 export default defineConfig({
   site: 'https://openaq.github.io',
-  base: 'docs.openaq.org',
+  // base: 'docs.openaq.org',
   integrations: [starlight({
     title: 'OpenAQ Docs',
     logo: {

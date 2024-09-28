@@ -11,9 +11,8 @@ import { Icon } from '@astrojs/starlight/components';
 OpenAQ limits the number of API requests you can make in a set time to ensure
 fair access for all users and prevent overuse.
 
-OpenAQ API provides a very generous rate limit for all users that should meet
-many needs. If your needs exceed this rate limit we offer custom pricing for the
-option for a higher rate limit.
+OpenAQ provides a very generous rate limit. If your needs exceed this rate
+limit, we offer a custom pricing option for a higher rate limit.
 
     <table>
       <thead>
@@ -31,7 +30,7 @@ option for a higher rate limit.
             <br />60 / minute <br />2,000 / hour
           </td>
           <td>
-            **Rate Limits**
+            **Rate limits**
             <br />Higher limits available depending on needs
           </td>
         </tr>
@@ -83,11 +82,9 @@ status code. To continue, wait until the next rate limit period starts as
 described in OpenAQ’s rate limit policy. Avoid making more requests during this
 time to prevent further errors.
 
-:::caution
-Exceeding API rate limits repeatedly can lead to either a temporary
+:::caution Exceeding API rate limits repeatedly can lead to either a temporary
 or permanent ban from the OpenAQ API. To maintain uninterrupted access, plan
-your API requests carefully.
-:::
+your API requests carefully. :::
 
 ## Rate limit headers
 
