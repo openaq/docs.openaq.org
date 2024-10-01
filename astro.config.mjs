@@ -124,7 +124,6 @@ export default defineConfig({
       },
     ],
   }),
-  , shield({})
   , sitemap()
   , robotsTxt()
 ],
