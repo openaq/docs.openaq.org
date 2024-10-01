@@ -15,24 +15,20 @@ as their original values and different levels of aggregation.
 In addition to providing raw measurement values as reported by providers, the
 API provides options for rolling up data into different aggregation periods.
 
-### Summary
-
-### Coverage
-
 ### Resources
 
-#### measurements
+#### Measurements
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/measurements`
 
-The measurements resource represents the original measurement value as reported
-by the upstream source.
+The `measurements` resource represents the original measurement value as
+reported by the upstream source.
 
-#### hours
+#### Hours
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/hours`
 
-The hours resource is the hourly average (mean) value of measurements.
+The `hours` resource is the hourly average (mean) value of measurements.
 
 <Aside type="note">
   Many sensors on the OpenAQ platform report hourly values. In the case where
@@ -40,21 +36,21 @@ The hours resource is the hourly average (mean) value of measurements.
   `measurements` resource are equivalent.
 </Aside>
 
-#### days
+#### Days
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/days`
 
 The days resource is the daily average (mean), computed from the hourly average
 values from 01:00 to 0:00 in local time.
 
-#### years
+#### Years
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/years`
 
 The years resource is the yearly average (mean), computed from the hourly
 average values from January 01 at 01:00 to December 31 0:00 in local time.
 
-### Aggregation
+### Aggregation Periods
 
 Additional aggregation is available and can be based on the above data groups
 
@@ -65,29 +61,35 @@ For most reliable results, limit queries to smaller time periods using the `date
 `date_to` query parameters. 
 </Aside>
 
-#### hourly
+#### Hourly
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/measurements/hourly`
+
+The `hourly` aggregator returns the average (mean) value for each hour across
+the selected time range.
 
 <Aside type="note">
   A call to the `/v3/sensors/{sensors_id}/measurements/hourly` is functionally
-  the same as `/v3/sensors/{sensors_id}/hours`. The `/hours` options should be
-  the preferred resource.
-</Aside>
-
-#### daily
-
-`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/hourly`
-
-`https://api.openaq.org/v3/sensors/{sensors_id}/hours/hourly`
-
-<Aside type="note">
-  A call to the `/v3/sensors/{sensors_id}/hours/daily` is functionally the same
-  as `/v3/sensors/{sensors_id}/days`. The `/days` options should be the
+  the same as `/v3/sensors/{sensors_id}/hours`. The `/hours` options is the
   preferred resource.
 </Aside>
 
-#### monthly
+#### Daily
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/daily`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/hours/daily`
+
+The `daily` aggregator returns the average (mean) value for each day across the
+selected time range.
+
+<Aside type="note">
+  A call to the `/v3/sensors/{sensors_id}/hours/daily` is functionally the same
+  as `/v3/sensors/{sensors_id}/days`. The `/days` options is the preferred
+  resource.
+</Aside>
+
+#### Monthly
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/measurements/monthly`
 
@@ -95,7 +97,10 @@ For most reliable results, limit queries to smaller time periods using the `date
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/days/monthly`
 
-#### yearly
+The `monthly` aggregator returns the average (mean) value for each month across
+the selected time range.
+
+#### Yearly
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/measurements/yearly`
 
@@ -103,15 +108,34 @@ For most reliable results, limit queries to smaller time periods using the `date
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/days/yearly`
 
+The `yearly` aggregator returns the average (mean) value for each year across
+the selected time range.
+
+<Aside type="note">
+  A call to the `/v3/sensors/{sensors_id}/hours/yearly` is functionally the same
+  as `/v3/sensors/{sensors_id}/years`. The `/years` options is the preferred
+  resource.
+</Aside>
+
 #### Hour of day
 
-`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/hourofday`
+`https://api.openaq.org/v3/sensors/{sensors_id}/hours/hourofday`
+
+The `hourofday` aggregator returns the average (mean) value for each hour in a
+24 hour day, across the selected time range. This allows analyzing air quality
+trends on an hourly basis, offering insights into daily patterns and peak
+pollution times, such as diurnal patterns.
 
 #### Day of week
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/measurements/dayofweek`
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/hours/dayofweek`
+
+The `dayofweek` aggregator returns the average (mean) value for each day in a
+week (Monday-Sunday), across the selected time range. This allows analyzing air
+quality trends on an daily basis, offering insights into daily patterns and peak
+pollution days.
 
 #### Month of year
 
@@ -120,6 +144,61 @@ For most reliable results, limit queries to smaller time periods using the `date
 `https://api.openaq.org/v3/sensors/{sensors_id}/hours/monthofyear`
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/days/monthofyear`
+
+The `monthofyear` aggregator returns the average (mean) value for each month in
+a year (January-December), across the selected time range. This allows analyzing
+air quality trends on an monthly basis, offering insights into seasonal
+patterns.
+
+### Response details
+
+#### Summary
+
+The summary object provides summary statistics about a aggregated measurement
+value. The object includes the minimum and maximum values, quartile values
+(25th, 50th and 75th), average (mean), high percentile (98th) and low percentile
+(2nd) and standard deviation. When requesting `measuremements` this field is
+null.
+
+```json
+{
+  "min": 0.001,
+  "q02": 0.002,
+  "q25": 0.025,
+  "median": 0.033,
+  "q75": 0.043,
+  "q98": 0.05669999999999999,
+  "max": 0.063,
+  "avg": 0.03316917293233082,
+  "sd": 0.013343557164562366
+}
+```
+
+#### Coverage
+
+The coverage object provides information on the coverage of measurements when
+aggregating values over time. When requesting `measuremements` this field is
+will show `expectedCount` and `observedCount` values of 1, and `percentComplete`
+of 100.
+
+```json
+{
+  "expectedCount": 273,
+  "expectedInterval": "273:00:00",
+  "observedCount": 266,
+  "observedInterval": "266:00:00",
+  "percentComplete": 97.0,
+  "percentCoverage": 97.0,
+  "datetimeFrom": {
+    "utc": "2024-01-01T10:00:00Z",
+    "local": "2024-01-01T03:00:00-07:00"
+  },
+  "datetimeTo": {
+    "utc": "2024-10-01T09:00:00Z",
+    "local": "2024-10-01T03:00:00-06:00"
+  }
+}
+```
 
 ## Key fields:
 
