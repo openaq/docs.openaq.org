@@ -1,0 +1,37 @@
+---
+title: API Key
+description:
+  Learn how to obtain, manage, and use your OpenAQ API key to access air quality
+  data. Secure your API key, include it in requests. Unauthorized requests
+  without a valid API key will be denied.
+---
+
+import { Icon, Aside } from '@astrojs/starlight/components';
+
+The OpenAQ API uses API keys to authenticate requests and manage access. These
+keys help control usage and enforce rate limits, ensuring that the service
+remains available and responsive for all users.
+
+## Managing Your API Key
+
+Sign up at the <a href="https://explore.openaq.org/account" target="_blank" rel="noopener noreferrer" style="display: inline-flex;">explore.openaq.org/account <Icon name="external" /></a>to get your API key. You can access and rotate your key from the OpenAQ Explorer
+account settings page <a href="https://explore.openaq.org/account" target="_blank" rel="noopener noreferrer" style="display: inline-flex;"> explore.openaq.org/account <Icon name="external" /></a>.
+
+<Aside type="caution">
+Treat your API key as you would a password. Do not share your API key
+with others. If your API key leaks, you can request a new one in your OpenAQ
+Explorer account.
+</Aside>
+
+## Using Your API Key
+
+Include your API key in the `X-API-Key` header of each request. For example:
+
+```sh
+curl --request GET \
+--url "https://api.openaq.org/v3/locations/2178" \
+--header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+Replace `YOUR-OPENAQ-API-KEY` with your actual key. This key verifies your
+requests and ensures they are processed.

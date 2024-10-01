@@ -1,0 +1,129 @@
+---
+title: Examples
+description:
+  This page provides examples of using the OpenAQ API for filtering air quality
+  data by parameters, geolocation, and more. Find ready-to-use queries to get
+  the latest PM2.5 values, retrieve sensor measurements, and explore data by
+  geographic radius or bounding box.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page provides examples of common queries and how to use the OpenAQ API to
+address them. For more complex solutions we recommend using one of the official
+API clients or SDKs, see [Libraries](../using-the-api/libraries) for more
+information.
+
+<Aside type="note">
+  Examples on this page will not work as-is. All requests use a placeholder API
+  Key value, `YOUR-OPENAQ-API-KEY`. This key will not work and will return an
+  HTTP 401 error, replace with your own API key.
+</Aside>
+
+import Map from '../../../components/Map.astro';
+
+## Filtering locations by parameter
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/locations?parameters_id=2&limit=1000" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+Where parameters_id 2 is the ID for PM<sub>2.5</sub> and limits the number
+results to 1,000 per page.
+
+## Finding locations near a point
+
+import radiusGeoJson from '../../../data/radius.json';
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/locations?coordinates=136.90610,35.14942&radius=12000&limit=1000" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+Where `136.90610,35.14942` is the central point in latitude,longitude and the
+radius is 12,000 meters (12km) and limits the number results to 1,000 per page.
+See the [Geospatial queries](../using-the-api/geospatial) guide for more
+information on geospatial querying. This radius query represents an area like:
+
+<Map
+  latitude={35.14942}
+  longitude={136.9061}
+  zoom={10}
+  container={'radius-map'}
+  marker={JSON.stringify({ latitude: 35.14942, longitude: 136.9061 })}
+  geojson={JSON.stringify(radiusGeoJson)}
+/>
+
+## Finding locations in a bounding box
+
+import labbox from '../../../data/labbox.json';
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/locations?bbox=-118.668153,33.703935,-118.155358,34.337306&limit=1000" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+Where `-118.668153,33.703935,-118.155358,34.337306` is the bounding box within
+which to search and limits the number results to 1,000 per page. See the
+[Geospatial queries](../using-the-api/geospatial) guide for more information on
+geospatial querying. This bounding box represents an area like the following:
+
+<Map
+  latitude={34.0212}
+  longitude={-118.4118}
+  zoom={8.5}
+  container={'los-angeles-map'}
+  geojson={JSON.stringify(labbox)}
+/>
+
+## Fetch original measurements for a sensor
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/sensors/3917/measurements?limit=1000" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+This fetches the original[^1] measurement values for sensor 3917, an Ozone
+sensor and limits the number results to 1,000 per page.
+
+[^1]: "original" indicates the original resolution as provided and ingested.
+
+## Fetch daily average values for a sensor
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/sensors/3917/days?limit=1000" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+This fetches the daily average (mean) values, computed from the original
+measurement values for sensor 3917, an Ozone sensor, and limits the number
+results to 1,000 per page.
+
+## Fetch yearly average values, computed from daily averages for a sensor
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/sensors/3917/days/yearly?limit=1000" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+This fetches the yearly average (mean) values, computed from the daily average
+values for sensor 3917, an Ozone sensor, and limits the number results to 1,000
+per page.
+
+## Get the latest PM<sub>2.5</sub> values
+
+```sh
+    curl --request GET \
+    --url "https://api.openaq.org/v3/parameters/2/latest?limit=1000" \
+    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
+```
+
+This fetches the latest PM<sub>2.5</sub> (parameter ID 2) for all sensors across
+the OpenAQ dataset and limits the number results to 1,000 per page.

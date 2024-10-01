@@ -1,0 +1,25 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Head.astro';
+
+const ogImageUrl = new URL(
+  `/og/${Astro.props.id.replace(/\.\w+$/, '.png')}`,
+  Astro.site
+);
+---
+
+<Default {...Astro.props}><slot /></Default>
+<script
+  is:inline
+  defer
+  data-domain="docs.openaq.org"
+  src="https://plausible.io/js/script.outbound-links.js"></script>
+<script is:inline>
+  window.plausible =
+    window.plausible ||
+    function () {
+      (window.plausible.q = window.plausible.q || []).push(arguments);
+    };
+</script>
+<meta property="og:image" content={ogImageUrl} />
+<meta name="twitter:image" content={ogImageUrl} />

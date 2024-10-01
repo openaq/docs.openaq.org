@@ -1,0 +1,54 @@
+---
+title: Instruments
+description:
+  The Instruments resource provides detailed information about the devices used
+  to gather air quality data, including their names, types, and manufacturers.
+---
+
+The Instruments resource provides information about the air quality measuring
+devices that gather the data. Each instrument has details such as its name,
+type, and manufacturer.
+
+## Purpose and Use
+
+The Instruments resource helps users learn about the instruments gathering air
+quality data. This resource also highlights whether an instrument is used for
+official monitoring. By using the information, users can understand what kinds
+of devices gather air quality data, which is useful when analyzing the
+reliability and scope of the data.
+
+## Key fields
+
+- id: A unique identifier for each instrument in the system.
+- name: The name of the device (e.g., "Clarity Node-S" or "BAM 1020").
+- isMonitor: A field showing whether the device is used for official monitoring.
+- manufacturer: Details about the company or organization that made the device,
+  including its ID and name. See the [Manufacturers](resources/manufacturers)
+  resource page for more information.
+
+## Example response payload
+
+`https://api.openaq.org/v3/instruments/2`
+
+```
+{
+    "meta": {
+        "name": "openaq-api",
+        "website": "/",
+        "page": 1,
+        "limit": 100,
+        "found": 1
+    },
+    "results": [
+        {
+            "id": 2,
+            "name": "Government Monitor",
+            "isMonitor": true,
+            "manufacturer": {
+                "id": 4,
+                "name": "Unknown Governmental Organization"
+            }
+        }
+    ]
+}
+```

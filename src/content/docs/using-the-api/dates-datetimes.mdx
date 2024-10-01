@@ -1,0 +1,68 @@
+---
+title: Dates, times and timezones
+description:
+  Learn how the OpenAQ API handles dates, times, and timezones, following the
+  ISO-8601 format. Understand the distinction between dates and datetimes, and
+  ensure accurate data interpretation with timezone considerations for global
+  air quality measurements.
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+### Datetimes
+
+Dates and datetimes in the OpenAQ API follow the <a href="/"
+target="_blank" rel="noopener noreferrer" style="display: inline-flex;">ISO-8601<Icon name="external"/></a> datetime
+format, e.g., `YYYY-MM-DDTHH:MM:SS.SSSSZ`.
+
+Data on OpenAQ are harmonized to follow an exclusive time-ending standard. This
+means a time stamp for an hourly measurement 03:00 represents the data from
+02:00 until 02:59.
+
+### Dates
+
+Dates represent the start of a time period. For example, a date like 2024-01-01
+represents January 1, 2024, and a year like 2024-01-01 represents the calendar
+year, 2024. This contrasts (see above) with how OpenAQ handles datetimes, where
+they represent the end of a time period. In other words, while a _date_ marks
+the start of a specific day or year, a _datetime_ indicates when that period has
+concluded. This distinction is crucial for accurately interpreting the data
+retrieved from the OpenAQ API, as it ensures clarity in understanding when data
+collection periods begin and end.
+
+### Timezones
+
+Handling time zones correctly is crucial due to the global nature of the
+dataset, which includes air quality data from monitoring stations across
+different time zones. When requesting data from the OpenAQ API, timestamps
+should ideally include a timezone in the ISO-8601 format (e.g.,
+2024-08-25T15:00:00Z for UTC time). This ensures that the data retrieved
+accurately reflects the time it was recorded, regardless of the station's
+location. If a timezone is not provided in the timestamp, the API automatically
+assumes the local time for the station where the data was collected. This
+default behavior is important to understand as it can affect data comparisons
+across different regions and time zones.
+
+To ensure timezones are clearly represented in results, the API returns a
+datetime object which includes both UTC time and local time.
+
+```json
+{
+  "utc": "2019-07-11T20:00:00Z",
+  "local": "2019-07-11T14:00:00-06:00"
+}
+```
+
+The OpenAQ API provides the timezone ID string for a given monitoring location
+under the `timezone` key. This follows the tzid in the <a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer" style="display:inline-flex;">Time Zone Database <Icon name="external" /></a>
+
+import Map from '../../../components/Map.astro';
+import timezones from '../../../data/tz.json';
+
+<Map
+  latitude={20}
+  longitude={10}
+  zoom={0.4}
+  container={'tz-map'}
+  geojson={JSON.stringify(timezones)}
+/>

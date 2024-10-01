@@ -1,0 +1,193 @@
+---
+title: Measurements
+tableOfContents:
+  maxHeadingLevel: 4
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The measurements resources in the OpenAQ API provide measurement values from
+sensors. Measurement values are available from a number of different resources
+as their original values and different levels of aggregation.
+
+## Purpose and Use
+
+In addition to providing raw measurement values as reported by providers, the
+API provides options for rolling up data into different aggregation periods.
+
+### Summary
+
+### Coverage
+
+### Resources
+
+#### measurements
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements`
+
+The measurements resource represents the original measurement value as reported
+by the upstream source.
+
+#### hours
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/hours`
+
+The hours resource is the hourly average (mean) value of measurements.
+
+<Aside type="note">
+  Many sensors on the OpenAQ platform report hourly values. In the case where
+  the upstream reporting period is hourly, the `hours` resource and
+  `measurements` resource are equivalent.
+</Aside>
+
+#### days
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/days`
+
+The days resource is the daily average (mean), computed from the hourly average
+values from 01:00 to 0:00 in local time.
+
+#### years
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/years`
+
+The years resource is the yearly average (mean), computed from the hourly
+average values from January 01 at 01:00 to December 31 0:00 in local time.
+
+### Aggregation
+
+Additional aggregation is available and can be based on the above data groups
+
+<Aside type="caution" >
+Aggregating from measurements, e.g. /v3/sensors/\{sensors_id\}/measurements/yearly,
+can be computationally slow and may not resolve, resulting in a 408 Request Timeout error.
+For most reliable results, limit queries to smaller time periods using the `date_from` and
+`date_to` query parameters. 
+</Aside>
+
+#### hourly
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/hourly`
+
+<Aside type="note">
+  A call to the `/v3/sensors/{sensors_id}/measurements/hourly` is functionally
+  the same as `/v3/sensors/{sensors_id}/hours`. The `/hours` options should be
+  the preferred resource.
+</Aside>
+
+#### daily
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/hourly`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/hours/hourly`
+
+<Aside type="note">
+  A call to the `/v3/sensors/{sensors_id}/hours/daily` is functionally the same
+  as `/v3/sensors/{sensors_id}/days`. The `/days` options should be the
+  preferred resource.
+</Aside>
+
+#### monthly
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/monthly`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/hours/monthly`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/days/monthly`
+
+#### yearly
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/yearly`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/hours/yearly`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/days/yearly`
+
+#### Hour of day
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/hourofday`
+
+#### Day of week
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/dayofweek`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/hours/dayofweek`
+
+#### Month of year
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/measurements/monthofyear`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/hours/monthofyear`
+
+`https://api.openaq.org/v3/sensors/{sensors_id}/days/monthofyear`
+
+## Key fields:
+
+- value - The average (mean) value in aggregate, except in the `measurements`
+  resource `value` is the original reported measurement value.
+- parameter - An object decribing the parameter measured by the sensor.
+- period - An object that describes the period agreggate includes a label of the
+  interval, the interval in hours, and a date range of the period aggregated.
+- coordinates - The coordinates of the measurement value for mobile monitoring.
+  `null` for stationary monitoring.
+- summary - An object that provides summary statistics of the aggregated data.
+  Includes mininimum, maximum, median and quartile values. This object will be
+  null for `measurements`
+- coverage - An object that provides coverage information of the aggregated
+  data. Includes expected counts, observed count, percent complete and a date
+  range for the values aggregated.
+
+## Example response payload
+
+```json
+{
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 1000,
+    "found": ">1000"
+  },
+  "results": [
+    {
+      "value": 0.043,
+      "parameter": {
+        "id": 10,
+        "name": "o3",
+        "units": "ppm",
+        "displayName": null
+      },
+      "period": {
+        "label": "raw",
+        "interval": "01:00:00",
+        "datetimeFrom": {
+          "utc": "2016-03-06T19:00:00Z",
+          "local": "2016-03-06T12:00:00-07:00"
+        },
+        "datetimeTo": {
+          "utc": "2016-03-06T20:00:00Z",
+          "local": "2016-03-06T13:00:00-07:00"
+        }
+      },
+      "coordinates": null,
+      "summary": null,
+      "coverage": {
+        "expectedCount": 1,
+        "expectedInterval": "01:00:00",
+        "observedCount": 1,
+        "observedInterval": "01:00:00",
+        "percentComplete": 100.0,
+        "percentCoverage": 100.0,
+        "datetimeFrom": {
+          "utc": "2016-03-06T19:00:00Z",
+          "local": "2016-03-06T12:00:00-07:00"
+        },
+        "datetimeTo": {
+          "utc": "2016-03-06T20:00:00Z",
+          "local": "2016-03-06T13:00:00-07:00"
+        }
+      }
+    }
+  ]
+}
+```

@@ -1,0 +1,102 @@
+---
+title: Geospatial queries
+description:
+  Discover how to perform geospatial queries using the OpenAQ API with bounding
+  box and point-and-radius methods. This guide outlines the parameters,
+  conditions, and examples for each query type, helping users effectively locate
+  air quality data within specified geographic areas.
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+import Map from '../../../components/Map.astro';
+
+The OpenAQ API provides two methods for making geospatial queries: bounding box
+and point and radius. Each provides a method for selecting coordinate points
+that intersect with a geographic area. Choose only one of these two methods at a
+time. If both queries appear in a URL, the API returns an HTTP 422
+"Unprocessable Content" error.
+
+## Bounding box
+
+A bounding box query identifies geographic features within a rectangular area
+defined by specific minimum and maximum longitude and latitude values. This can
+be helpful for finding features within arbitrary geographic areas.
+
+The bounding box query parameter for the OpenAQ API is `bbox`. This parameter
+takes a comma delimited list of 4 WGS84 (<a href="https://epsg.io/4326" 
+target="_blank" rel="noopener noreferrer" style="display: inline-flex;">EPSG:4326<Icon name="external"/></a>) coordinates
+in the form minimum X, minimum Y, maximum X, maximum Y, where X is the longitude
+and Y is latitude.
+
+### Conditions
+
+- If coordinate values used with the `bbox` query parameter are outside the
+  bounds of WGS84 (-180,-90,180,90), the API returns an HTTP 422 "Unprocessable
+  Content" error.
+- If `bbox` appears in the query with the `coordinates` or `radius` query
+  parameters, the API returns an HTTP 422 "Unprocessable Content" error.
+
+import bboxGeoJson from '../../../data/bbox.json';
+
+### Example
+
+To query a bounding box around Accra, Ghana, the query parameter for the URL
+looks something like this.
+
+`?bbox=5.488869,-0.396881,5.732144,-0.021973`
+
+This bounding box query can be represented as the following polygon:
+
+<Map
+  latitude={5.610519}
+  longitude={-0.209427}
+  zoom={9.5}
+  container={'bbox-map'}
+  geojson={JSON.stringify(bboxGeoJson)}
+/>
+
+## Point and radius
+
+The point and radius query allows for searching for features within a distance
+of a point. This can be helpful for finding features near a particular place.
+
+The point and radius query for the OpenAQ API uses the `coordinates` and
+`radius` query parameters together. The `coordinates` parameter takes a comma
+delimited coordinate pair in WGS84 (<a href="https://epsg.io/4326" 
+target="_blank" rel="noopener noreferrer" style="display: inline-flex;">EPSG:4326<Icon name="external"/></a>)
+coordinates in the form Y,X or latitude,longitude. The `radius` parameter is the
+search distance from the coordinate pair in meters, with a maximum value of
+25,000 (25km).
+
+### Conditions
+
+- If coordinate values used with `coordinates` query parameter are outside the
+  bounds of WGS84, (-180,-90,180,90), the API returns an HTTP 422 "Unprocessable
+  Content" error.
+- If the `coordinates` parameter appears without the `radius` parameter, or
+  _vice versa_, the API returns an HTTP 422 "Unprocessable Content" error.
+- If `coordinates` and `radius` appear in the query with the `bbox` query
+  parameter, the API returns an HTTP 422 "Unprocessable Content" error.
+- If the `radius` parameter value exceeds 25,000, is 0, or is negative, the API
+  returns an HTTP 422 "Unprocessable Content" error.
+
+### Example
+
+To search around the point 136.90610, 35.14942 in Nagoya, Japan, the query
+parameters for the URL looks something like this:
+
+`?coordinates=136.90610,35.14942&radius=12000`
+
+import radiusGeoJson from '../../../data/radius.json';
+
+This can be represented as a circle with a point at the center.
+
+<Map
+  latitude={35.14942}
+  longitude={136.9061}
+  zoom={10}
+  container={'radius-map'}
+  marker={JSON.stringify({ latitude: 35.14942, longitude: 136.9061 })}
+  geojson={JSON.stringify(radiusGeoJson)}
+/>

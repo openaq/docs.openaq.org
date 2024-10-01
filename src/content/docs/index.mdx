@@ -1,0 +1,39 @@
+---
+title: OpenAQ API Docs
+description: Welcome to the OpenAQ API documentation!
+template: splash
+hero:
+  image:
+    alt: OpenAQ logo
+    light: ../../assets/logo.svg
+    dark: ../../assets/logo-dark.svg
+  actions:
+    - text: Get started
+      link: about/about
+      icon: right-arrow
+    - text: Visit OpenAQ on GitHub
+      link: https://github.com/openaq
+      icon: external
+      variant: minimal
+      attrs:
+        target: _blank
+        rel: me noopener noreferrer
+---
+
+import { CardGrid } from '@astrojs/starlight/components';
+import  CustomCard  from '../../components/CustomCard.astro';
+
+
+## Explore
+
+<CardGrid stagger>		
+	<CustomCard title="Get started with the OpenAQ API" href="/using-the-api/quick-start" icon="open-book">
+    Try our quick start guide to learn the basics of requesting data from OpenAQ.
+	</CustomCard>
+	<CustomCard title="Read the OpenAQ API OpenAPI Spec" href="https://api.openaq.org/docs" icon="seti:json">
+		See the Swagger reference documentation for the OpenAQ API.
+	</CustomCard>
+	<CustomCard title="Open data on AWS" href="/aws/about" icon="seti:csv">
+		Learn how to access the OpenAQ data archive from the Open Data on AWS S3 bucket.
+	</CustomCard>
+</CardGrid>

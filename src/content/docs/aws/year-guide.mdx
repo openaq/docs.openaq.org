@@ -1,0 +1,25 @@
+---
+title: Guide - Download a year of data for a location.
+---
+
+This guide shows you how to download a relatively large amount of measurement
+data, one year of hourly measurements from a single location, from the Open Data
+on AWS bucket.
+
+import { Aside } from '@astrojs/starlight/components';
+
+Run the following command to copy all data from
+[location 2178](https://explore.openaq.org/locations/2178) during the year 2020
+to a local directory named `data`:
+
+```sh
+aws s3 cp \
+--no-sign-request \
+--recursive \
+s3://openaq-data-archive/records/csv.gz/locationid=2178/year=2020/ \
+data
+```
+
+<Aside type="caution" title="Warning">
+  This will download over 350 files to your system, roughly 1.5 MB of data.
+</Aside>

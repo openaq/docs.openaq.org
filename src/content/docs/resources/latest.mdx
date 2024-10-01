@@ -1,0 +1,179 @@
+---
+title: Latest
+description:
+  The Latest resource provides the most recent air quality measurements from
+  sensors, including the measurement time, value, location coordinates, and
+  sensor information. Track real-time air quality trends and gain insights into
+  the newest data available across locations and parameters.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Latest resource in the OpenAQ API provides the most recent air quality
+measurement from a sensor. Each record provides the measurement time, value,
+location coordinates, and sensor information.
+
+<Aside type="note">
+  The latest value does not represent the most recent measurement ingested by
+  OpenAQ for a given sensor, but instead represents the last measurement value
+  in the series. Due to the nature of how some upstream providers report data,
+  measurements are not necessarily reported in order. Polling latest resources
+  for measurement values does not guarantee complete data coverage as
+  measurements may be ingested out of their time series order and not show up as
+  a "latest" value.
+</Aside>
+
+## Purpose and Use
+
+The Latest resource provides access to the newest air quality data from sensors.
+It shows recent measurements and their geographic location, allowing users to
+track air quality trends quickly and make timely decisions.
+
+The Latest resource is accessible through either a single [location](locations),
+showing latest values for all sensors available at that location, or by
+parameter, showing the latest value across all sensors that measure that
+parameter, e.g.:
+
+```
+https://api.openaq.org/v3/locations/2178/latest
+```
+
+or
+
+```
+https://api.openaq.org/v3/parameters/2/latest
+```
+
+## Key Fields
+
+- datetime: the time of the measurement, provided in UTC and local time. See
+  [Dates, times and timezones](using-the-api/dates-datetimes) for more
+  information.
+- value: the sensor measurement reading.
+- coordinates: the location in WGS84 latitude and longitude of the reading.
+- sensorsId: the unique ID for the sensor that took the reading. See the
+  [Sensors](sensors) resource page for more information.
+- locationsId: the unique ID for the location where the sensor is situated. See
+  the [Locations](locations) resource page for more information.
+
+## Example response payload
+
+`https://api.openaq.org/v3/locations/2178/latest`
+
+```
+{
+    "meta": {
+        "name": "openaq-api",
+        "website": "/",
+        "page": 1,
+        "limit": 100,
+        "found": 8
+    },
+    "results": [
+        {
+            "datetime": {
+                "utc": "2024-09-25T22:00:00Z",
+                "local": "2024-09-25T16:00:00-06:00"
+            },
+            "value": 0.0023,
+            "coordinates": {
+                "latitude": 35.1353,
+                "longitude": -106.584702
+            },
+            "sensorsId": 3916,
+            "locationsId": 2178
+        },
+        {
+            "datetime": {
+                "utc": "2024-09-25T22:00:00Z",
+                "local": "2024-09-25T16:00:00-06:00"
+            },
+            "value": 0.0005,
+            "coordinates": {
+                "latitude": 35.1353,
+                "longitude": -106.584702
+            },
+            "sensorsId": 3918,
+            "locationsId": 2178
+        },
+        {
+            "datetime": {
+                "utc": "2024-09-25T22:00:00Z",
+                "local": "2024-09-25T16:00:00-06:00"
+            },
+            "value": 4.4,
+            "coordinates": {
+                "latitude": 35.1353,
+                "longitude": -106.584702
+            },
+            "sensorsId": 3920,
+            "locationsId": 2178
+        },
+        {
+            "datetime": {
+                "utc": "2024-09-25T22:00:00Z",
+                "local": "2024-09-25T16:00:00-06:00"
+            },
+            "value": 0.067,
+            "coordinates": {
+                "latitude": 35.1353,
+                "longitude": -106.584702
+            },
+            "sensorsId": 3917,
+            "locationsId": 2178
+        },
+        {
+            "datetime": {
+                "utc": "2024-09-25T22:00:00Z",
+                "local": "2024-09-25T16:00:00-06:00"
+            },
+            "value": 29.0,
+            "coordinates": {
+                "latitude": 35.1353,
+                "longitude": -106.584702
+            },
+            "sensorsId": 3919,
+            "locationsId": 2178
+        },
+        {
+            "datetime": {
+                "utc": "2024-09-25T22:00:00Z",
+                "local": "2024-09-25T16:00:00-06:00"
+            },
+            "value": 0.2,
+            "coordinates": {
+                "latitude": 35.1353,
+                "longitude": -106.584702
+            },
+            "sensorsId": 25227,
+            "locationsId": 2178
+        },
+        {
+            "datetime": {
+                "utc": "2024-09-25T22:00:00Z",
+                "local": "2024-09-25T16:00:00-06:00"
+            },
+            "value": 0.002,
+            "coordinates": {
+                "latitude": 35.1353,
+                "longitude": -106.584702
+            },
+            "sensorsId": 4272103,
+            "locationsId": 2178
+        },
+        {
+            "datetime": {
+                "utc": "2024-09-25T22:00:00Z",
+                "local": "2024-09-25T16:00:00-06:00"
+            },
+            "value": 0.0,
+            "coordinates": {
+                "latitude": 35.1353,
+                "longitude": -106.584702
+            },
+            "sensorsId": 4272226,
+            "locationsId": 2178
+        }
+    ]
+}
+```

@@ -1,0 +1,197 @@
+---
+title: Locations
+description:
+  The Locations resource provides detailed information about air quality
+  monitoring stations, including their geographic coordinates, sensors, and
+  responsible organizations. Explore data from specific stations to understand
+  air quality measurements, the instruments used, and the data providers.
+---
+
+The Locations resource in the OpenAQ API provides details about air quality
+monitoring stations, including their name, geographic coordinates, and time zone
+information. It also identifies the responsible organization (when known) and
+data provider. Each location measures various parameters and provides
+information on the sensors, including whether the station is mobile or
+stationary, and whether the station is actively monitoring air quality.
+Licensing and attribution details clarify data usage rights.
+
+## Purpose and Use
+
+The Locations resource helps users find air quality stations in specific areas
+and understand details about the station, from what instrumentation it uses and
+which pollutants are measured to who runs the station and owns the data. This
+allows for analysis and appropriate use of the data.
+
+## Key fields
+
+- id: a unique identifier for each location.
+- name: the name of the station.
+- country: the country where the station operates, including its ISO 3166-1
+  alpha 2 code and name. See the [Countries](countries) resource page for more
+  information.
+- provider: the organization or individual that facilitates the sharing of data.
+  See the [Providers](providers) resource for more information.
+- owner: the organization or individual responsible for the station. See the
+  [Owners](owners) resource page for more information.
+- coordinates: the geographic position, WGS84 latitude and longitude, of the
+  station. For mobile locations, this is the first geographic point measured.
+- instruments: a list of devices used at the location. See the
+  [Instruments](instruments) resource for more information.
+- sensors: a list of sensors that measure pollutants, including the parameter
+  measured. See the [Sensors](sensors) resource for more information.
+- licenses: a list of licenses, with attribution information and a time period
+  that each license covers. See the License resource for more information.
+- timezone:
+
+## Example response payload
+
+`https://api.openaq.org/v3/locations/2178`
+
+```
+{
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 100,
+    "found": 1
+  },
+  "results": [
+    {
+      "id": 2178,
+      "name": "Del Norte",
+      "locality": "Albuquerque",
+      "timezone": "America/Denver",
+      "country": {
+        "id": 155,
+        "code": "US",
+        "name": "United States"
+      },
+      "owner": {
+        "id": 4,
+        "name": "Unknown Governmental Organization"
+      },
+      "provider": {
+        "id": 119,
+        "name": "AirNow"
+      },
+      "isMobile": false,
+      "isMonitor": true,
+      "instruments": [
+        {
+          "id": 2,
+          "name": "Government Monitor"
+        }
+      ],
+      "sensors": [
+        {
+          "id": 25227,
+          "name": "co ppm",
+          "parameter": {
+            "id": 8,
+            "name": "co",
+            "units": "ppm",
+            "displayName": "CO"
+          }
+        },
+        {
+          "id": 4272226,
+          "name": "no ppm",
+          "parameter": {
+            "id": 35,
+            "name": "no",
+            "units": "ppm",
+            "displayName": "NO"
+          }
+        },
+        {
+          "id": 3916,
+          "name": "no2 ppm",
+          "parameter": {
+            "id": 7,
+            "name": "no2",
+            "units": "ppm",
+            "displayName": "NO₂"
+          }
+        },
+        {
+          "id": 4272103,
+          "name": "nox ppm",
+          "parameter": {
+            "id": 19840,
+            "name": "nox",
+            "units": "ppm",
+            "displayName": "NOx"
+          }
+        },
+        {
+          "id": 3917,
+          "name": "o3 ppm",
+          "parameter": {
+            "id": 10,
+            "name": "o3",
+            "units": "ppm",
+            "displayName": "O₃"
+          }
+        },
+        {
+          "id": 3919,
+          "name": "pm10 µg/m³",
+          "parameter": {
+            "id": 1,
+            "name": "pm10",
+            "units": "µg/m³",
+            "displayName": "PM10"
+          }
+        },
+        {
+          "id": 3920,
+          "name": "pm25 µg/m³",
+          "parameter": {
+            "id": 2,
+            "name": "pm25",
+            "units": "µg/m³",
+            "displayName": "PM2.5"
+          }
+        },
+        {
+          "id": 3918,
+          "name": "so2 ppm",
+          "parameter": {
+            "id": 9,
+            "name": "so2",
+            "units": "ppm",
+            "displayName": "SO₂"
+          }
+        }
+      ],
+      "coordinates": {
+        "latitude": 35.1353,
+        "longitude": -106.584702
+      },
+      "licenses": [
+        {
+          "id": 33,
+          "name": "US Public Domain",
+          "attribution": {
+            "name": "Unknown Governmental Organization",
+            "url": null
+          },
+          "dateFrom": "2016-01-30",
+          "dateTo": null
+        }
+      ],
+      "bounds": [-106.584702, 35.1353, -106.584702, 35.1353],
+      "distance": null,
+      "datetimeFirst": {
+        "utc": "2016-03-06T20:00:00Z",
+        "local": "2016-03-06T13:00:00-07:00"
+      },
+      "datetimeLast": {
+        "utc": "2024-09-25T22:00:00Z",
+        "local": "2024-09-25T16:00:00-06:00"
+      }
+    }
+  ]
+}
+```

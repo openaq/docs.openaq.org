@@ -1,0 +1,48 @@
+---
+title: Owners
+description:
+  The Owners resource identifies the individuals or organizations responsible
+  for managing air quality monitoring stations and instruments. Learn who
+  oversees specific stations and gain context on data collection sources.
+---
+
+The Owners resource in the OpenAQ API provides information about the people or
+organizations responsible for managing air quality monitoring stations and
+instruments. Owners may include governmental agencies, research institutions,
+other organizations that oversee air quality monitoring, and even individuals
+who have installed an air quality monitoring device on their property. The data
+“owner” may be the same as the data “provider” (see Providers).
+
+## Purpose and Use
+
+The Owners resource helps users identify who manages specific air quality
+monitoring stations. Knowing the owner offers context about the individual or
+organization behind the data collection, and to whom to attribute the data.
+
+## Key fields
+
+- id: a unique identifier for each owner.
+- name: the name of the organization or individual responsible for managing the
+  air monitoring location.
+
+## Example response payload
+
+`https://api.openaq.org/v3/owners/3549`
+
+```
+{
+    "meta": {
+        "name": "openaq-api",
+        "website": "/",
+        "page": 1,
+        "limit": 100,
+        "found": 1
+    },
+    "results": [
+        {
+            "id": 3549,
+            "name": "City of Zabok"
+        }
+    ]
+}
+```

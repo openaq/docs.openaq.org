@@ -1,0 +1,37 @@
+---
+title: Errors
+description:
+  Explore how the OpenAQ API utilizes standard HTTP status codes to communicate
+  the success or failure of requests. This guide provides detailed information
+  on error codes, helping developers quickly identify and resolve issues that
+  may occur while using the API.
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+The OpenAQ API uses standard HTTP status codes to indicate the outcome of API
+requests, whether successful or erroneous. A successful request is accompanied
+by a 200 "OK" status code that confirms the operation was completed as expected.
+In cases of errors, the API responds with specific status codes that signify
+different types of issues. These codes enable developers to quickly understand
+and address any problems that arise when using the API.
+
+<table>
+    <thead>
+        <th>HTTP Code</th>
+        <th>Status text</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr><td>200</td><td>OK</td><td>Successful request.</td></tr>
+        <tr><td>401</td><td>Unauthorized</td><td>Valid API key is missing.</td></tr>
+        <tr><td>404</td><td>Not Found</td><td>The requested resource does not exist.</td></tr>
+        <tr><td>408</td><td>Request Timeout</td><td>The request timed out, the query may be too complex causing it to run too long.</td></tr>
+        <tr><td>422</td><td>Unprocessable Content</td><td>The query provided is
+        incorrect and does not follow the standards set by the API specification.</td></tr>
+        <tr><td>429</td><td>Too Many Requests</td><td>The number of requests
+        exceeded the rate limit for the given time period.</td></tr>
+        <tr><td>500, 502, 503, 504</td><td>Server errors</td><td>Something has
+        failed on the side of OpenAQ services. Contact us on <a href="https://join.slack.com/t/openaq/shared_invite/zt-yzqlgsva-v6McumTjy2BZnegIK9XCVw" target="_blank" rel="noopener noreferrer" style="display: inline-flex;">Slack <Icon name="external"/></a>.</td></tr>
+    </tbody>
+</table>

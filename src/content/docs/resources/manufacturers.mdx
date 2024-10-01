@@ -1,0 +1,56 @@
+---
+title: Manufacturers
+description:
+  The Manufacturers resource provides insights into the companies that produce
+  air quality monitoring instruments. Discover who manufactures the devices
+  behind the air quality data, helping to assess the reliability and attributes
+  of the equipment used.
+---
+
+The Manufacturers resource in the OpenAQ API provides information on the
+companies that produce the air quality monitoring instruments.
+
+## Purpose and Use
+
+The Manufacturers resource allows users to identify who manufactured the
+instrument producing the air quality measurement. Understanding the origins of
+the equipment is useful for assessing the reliability of the instruments.
+
+Note: This metadata is not available in all cases, and will be replaced with
+placeholder information.
+
+## Key fields
+
+- id: a unique identifier for each manufacturer.
+- name: the name of the manufacturer.
+- instruments: a list of instruments produced by the manufacturer, including
+  their ID and name. See the [Instruments](instruments) resource page for more
+  information.
+
+## Example response payload
+
+`https://api.openaq.org/v3/manufacturers/4`
+
+```
+{
+    "meta": {
+        "name": "openaq-api",
+        "website": "/",
+        "page": 1,
+        "limit": 100,
+        "found": 1
+    },
+    "results": [
+        {
+            "id": 4,
+            "name": "Unknown Governmental Organization",
+            "instruments": [
+                {
+                    "id": 2,
+                    "name": "Government Monitor"
+                }
+            ]
+        }
+    ]
+}
+```

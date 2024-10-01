@@ -1,0 +1,156 @@
+---
+title: Providers
+description:
+  The Providers resource reveals entities that contribute air quality data to
+  the OpenAQ platform. 
+---
+
+The Providers resource in the OpenAQ API provides details about the entities
+that supply air quality data to the platform. These providers may use APIs,
+websites, or other means to share their data with OpenAQ, ensuring access to air
+quality information from various sources.
+
+## Purpose and Use
+
+The Providers resource helps users identify the organizations contributing air
+quality data to the platform. By understanding who supplies the data to OpenAQ,
+users can assess the origins of the data, which is useful for evaluating their
+reliability and scope. Providers may be governmental agencies, research
+organizations, or private companies. The data “provider” may be the same as the
+data “owner” (see [Owners](owners)). The data “provider” may also be the same as
+the instrument “manufacturer” (see [Manufacturers](manufacturers)).
+
+## Key fields
+
+- id: A unique identifier for each provider.
+- name: The name of the provider.
+- sourceName: The internal name used for the data source.
+- exportPrefix: A label used when exporting data to AWS Open Data bucket.
+- datetimeAdded: The date the provider was added to the OpenAQ platform,
+  provided in UTC and local time. See
+  [Dates, times and timezones](http://using-the-api/dates-datetimes) for more
+  information.
+- datetimeFirst: The datetime of the first measurement available in OpenAQ from
+  the provider, provided in UTC and local time See
+  [Dates, times and timezones](http://using-the-api/dates-datetimes) for more
+  information.
+- datetimeLast: The datetime of the last measurement available in OpenAQ from
+  the provider. See
+  [Dates, times and timezones](http://using-the-api/dates-datetimes) for more
+  information.
+- parameters: The list of pollutants and environmental parameters available from
+  the provider. See the [Parameters](http://parameters) resource page for more
+  information.
+- bbox: The geographic bounds (bounding box) for which the provider's data
+  covers in form X minimum, Y minimum, X maximum, Y maximum.
+
+## Example response payload
+
+`https://api.openaq.org/v3/providers/119`
+
+```
+{
+    "meta": {
+        "name": "openaq-api",
+        "website": "/",
+        "page": 1,
+        "limit": 100,
+        "found": 1
+    },
+    "results": [
+        {
+            "id": 119,
+            "name": "AirNow",
+            "sourceName": "AirNow",
+            "exportPrefix": "airnow",
+            "datetimeAdded": "2023-03-29T20:23:57.054584Z",
+            "datetimeFirst": "2016-01-30T01:00:00Z",
+            "datetimeLast": "2024-09-25T23:00:00Z",
+            "entitiesId": 1,
+            "parameters": [
+                {
+                    "id": 1,
+                    "name": "pm10",
+                    "units": "µg/m³",
+                    "displayName": null
+                },
+                {
+                    "id": 2,
+                    "name": "pm25",
+                    "units": "µg/m³",
+                    "displayName": null
+                },
+                {
+                    "id": 7,
+                    "name": "no2",
+                    "units": "ppm",
+                    "displayName": null
+                },
+                {
+                    "id": 8,
+                    "name": "co",
+                    "units": "ppm",
+                    "displayName": null
+                },
+                {
+                    "id": 9,
+                    "name": "so2",
+                    "units": "ppm",
+                    "displayName": null
+                },
+                {
+                    "id": 10,
+                    "name": "o3",
+                    "units": "ppm",
+                    "displayName": null
+                },
+                {
+                    "id": 11,
+                    "name": "bc",
+                    "units": "µg/m³",
+                    "displayName": null
+                },
+                {
+                    "id": 35,
+                    "name": "no",
+                    "units": "ppm",
+                    "displayName": null
+                },
+                {
+                    "id": 19840,
+                    "name": "nox",
+                    "units": "ppm",
+                    "displayName": null
+                }
+            ],
+            "bbox": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -161.767,
+                            -34.5766
+                        ],
+                        [
+                            -161.767,
+                            70.1319
+                        ],
+                        [
+                            123.424434,
+                            70.1319
+                        ],
+                        [
+                            123.424434,
+                            -34.5766
+                        ],
+                        [
+                            -161.767,
+                            -34.5766
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
+}
+```

@@ -1,0 +1,105 @@
+---
+title: Countries
+description:
+  The Countries resource in the OpenAQ dataset lists nations with air quality
+  monitoring locations. The dataset uses ISO 3166-1 alpha 2 codes and Natural
+  Earth 10m boundaries to ensure accurate geospatial representation.
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+import Map from '../../../components/Map.astro';
+
+import neCountriesGeoJSON from '../../../data/ne_10m_admin_0_countries.json';
+  
+The Countries resource lists countries in the OpenAQ data set and details the
+air quality parameters available for each. The list only includes countries that
+have monitoring locations from which OpenAQ ingests data, and the Country value
+is derived from the coordinates provided by the upstream provider. OpenAQ uses
+the Natural Earth 10m dataset for country boundaries, see this
+[disclaimer](/disclaimers/countries). OpenAQ uses the <a style="display: inline-flex;" href="https://www.iso.org/iso-3166-country-codes.html" target="_blank" rel="noopener noreferrer">ISO 3166-1 alpha 2<Icon name="external"/></a>
+country codes, which may differ from that reported by the upstream provider.
+
+## Purpose and Use
+
+The Countries resource helps users discover which countries are in the OpenAQ
+data set. It also shows the air quality metrics for each country. This makes it
+possible to filter and analyze air quality data by country.
+
+<Map
+  latitude={20}
+  longitude={10}
+  zoom={0.4}
+  container={'ne-countries-map'}
+  geojson={JSON.stringify(neCountriesGeoJSON)}
+/>
+
+## Key fields
+
+- id - the unique identifier used within the OpenAQ system for a country
+- code - the ISO 3166-1 alpha 2 code for the country
+- name - the English name of the country
+
+## Example response payload
+
+`https://api.openaq.org/v3/countries/42`
+
+```
+{
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 100,
+    "found": 1
+  },
+  "results": [
+    {
+      "id": 42,
+      "code": "KZ",
+      "name": "Kazakhstan",
+      "datetimeFirst": "2018-07-27T17:00:00Z",
+      "datetimeLast": "2024-08-31T21:07:06.731Z",
+      "parameters": [
+        {
+          "id": 1,
+          "name": "pm10",
+          "units": "µg/m³",
+          "displayName": null
+        },
+        {
+          "id": 2,
+          "name": "pm25",
+          "units": "µg/m³",
+          "displayName": null
+        },
+        {
+          "id": 19,
+          "name": "pm1",
+          "units": "µg/m³",
+          "displayName": null
+        },
+        {
+          "id": 98,
+          "name": "relativehumidity",
+          "units": "%",
+          "displayName": null
+        },
+        {
+          "id": 100,
+          "name": "temperature",
+          "units": "c",
+          "displayName": null
+        },
+        {
+          "id": 125,
+          "name": "um003",
+          "units": "particles/cm³",
+          "displayName": null
+        }
+      ]
+    }
+  ]
+}
+
+```
