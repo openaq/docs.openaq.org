@@ -7,6 +7,8 @@ description:
   may occur while using the API.
 ---
 
+import FeedbackForm from '../../../components/FeedbackForm.astro'
+
 import { Icon } from '@astrojs/starlight/components';
 
 The OpenAQ API uses standard HTTP status codes to indicate the outcome of API
@@ -35,3 +37,5 @@ and address any problems that arise when using the API.
         failed on the side of OpenAQ services. Contact us on <a href="https://join.slack.com/t/openaq/shared_invite/zt-yzqlgsva-v6McumTjy2BZnegIK9XCVw" target="_blank" rel="noopener noreferrer" style="display: inline-flex;">Slack <Icon name="external"/></a>.</td></tr>
     </tbody>
 </table>
+
+<FeedbackForm />

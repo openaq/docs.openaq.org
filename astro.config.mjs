@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi';
 import { shield } from '@kindspells/astro-shield'
 import sitemap from '@astrojs/sitemap';
+import icon from "astro-icon";
 
 import robotsTxt from 'astro-robots-txt';
 
@@ -126,5 +127,10 @@ export default defineConfig({
   }),
   , sitemap()
   , robotsTxt()
+  , icon({
+    include: {
+      mdi: ["emoticon-happy-outline", "emoticon-sad-outline"], // Loads only Material Design Icon's "account" SVG
+    }
+  })
 ],
 });

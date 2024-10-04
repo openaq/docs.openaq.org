@@ -6,6 +6,8 @@ description:
   without a valid API key will be denied.
 ---
 
+import FeedbackForm from '../../../components/FeedbackForm.astro'
+
 import { Icon, Aside } from '@astrojs/starlight/components';
 
 The OpenAQ API uses API keys to authenticate requests and manage access. These
@@ -35,3 +37,5 @@ curl --request GET \
 
 Replace `YOUR-OPENAQ-API-KEY` with your actual key. This key verifies your
 requests and ensures they are processed.
+
+<FeedbackForm />

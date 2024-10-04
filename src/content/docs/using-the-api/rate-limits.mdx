@@ -6,6 +6,9 @@ description:
   requests. Exceeding limits can result in a temporary or permanent ban.
 ---
 
+import FeedbackForm from '../../../components/FeedbackForm.astro'
+
+
 import { Icon, Aside } from '@astrojs/starlight/components';
 
 OpenAQ limits the number of API requests you can make in a set time to ensure
@@ -160,3 +163,5 @@ In the example HTTP response above, the rate limit headers reveal:
 - You have 9 requests remaining before reaching the limit.
 - The limit will reset in 60 seconds, at which point the request count will
   start over.
+
+<FeedbackForm />

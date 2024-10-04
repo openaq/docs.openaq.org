@@ -7,6 +7,8 @@ description:
   the limit and page query parameters to navigate through extensive datasets
   efficiently.
 ---
+import FeedbackForm from '../../../components/FeedbackForm.astro'
+
 
 Air quality monitoring produces a significant volume of data. Therefore, the
 OpenAQ API uses pagination to return a subset of the results. By default, a
@@ -31,3 +33,5 @@ response JSON also provides the limit under the `limit` key:
     "results": [...]
 }
 ```
+
+<FeedbackForm />

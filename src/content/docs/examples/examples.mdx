@@ -8,6 +8,8 @@ description:
 ---
 
 import { Aside } from '@astrojs/starlight/components';
+import FeedbackForm from '../../../components/FeedbackForm.astro'
+
 
 This page provides examples of common queries and how to use the OpenAQ API to
 address them. For more complex solutions we recommend using one of the official
@@ -127,3 +129,5 @@ per page.
 
 This fetches the latest PM<sub>2.5</sub> (parameter ID 2) for all sensors across
 the OpenAQ dataset and limits the number results to 1,000 per page.
+
+<FeedbackForm />

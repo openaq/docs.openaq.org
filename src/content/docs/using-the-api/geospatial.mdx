@@ -6,6 +6,7 @@ description:
   conditions, and examples for each query type, helping users effectively locate
   air quality data within specified geographic areas.
 ---
+import FeedbackForm from '../../../components/FeedbackForm.astro'
 
 import { Icon } from '@astrojs/starlight/components';
 
@@ -100,3 +101,5 @@ This can be represented as a circle with a point at the center.
   marker={JSON.stringify({ latitude: 35.14942, longitude: 136.9061 })}
   geojson={JSON.stringify(radiusGeoJson)}
 />
+
+<FeedbackForm />

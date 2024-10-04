@@ -7,6 +7,8 @@ description:
   air quality measurements.
 ---
 
+import FeedbackForm from '../../../components/FeedbackForm.astro'
+
 import { Icon } from '@astrojs/starlight/components';
 
 ### Datetimes
@@ -66,3 +68,5 @@ import timezones from '../../../data/tz.json';
   container={'tz-map'}
   geojson={JSON.stringify(timezones)}
 />
+
+<FeedbackForm />
