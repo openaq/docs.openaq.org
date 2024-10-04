@@ -37,6 +37,7 @@ import { Icon } from 'astro-icon/components';
   <fieldset>
     <legend>Was this page helpful?</legend>
     <div class="feedback-form-buttons" style="margin-top: 0;">
+      <input type="hidden" name="feedback-value" id="feedback-value" value="" />
       <button type="submit" data-value="good" style="margin-top: 0.5rem;">
         <Icon name="mdi:emoticon-happy-outline" width="32" height="32" />
       </button>
@@ -58,7 +59,7 @@ import { Icon } from 'astro-icon/components';
 
   function onFormSubmit(e: SubmitEvent) {
     e.preventDefault();
-    const value = e.submitter?.dataset.value;
+    const value = submitValueField.value;
     trackEvent(`Feedback:${value}`);
     const form = document.querySelector<HTMLFormElement>('.feedback-form');
     (form!.firstElementChild! as HTMLFieldSetElement).disabled = true;
@@ -70,4 +71,12 @@ import { Icon } from 'astro-icon/components';
 
   const form = document.querySelector<HTMLFormElement>('.feedback-form');
   form!.addEventListener('submit', onFormSubmit);
+
+  const submitValueField = document.getElementById('feedback-value') as HTMLInputElement;
+
+  form!.querySelectorAll('button[type="submit"]').forEach(button => {
+    button.addEventListener('click', function(e) {
+      submitValueField!.value = (e.target as HTMLButtonElement).getAttribute('data-value')!;
+    });
+  });
 </script>
