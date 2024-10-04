@@ -76,7 +76,7 @@ import { Icon } from 'astro-icon/components';
 
   form!.querySelectorAll('button[type="submit"]').forEach(button => {
     button.addEventListener('click', function(e) {
-      submitValueField!.value = (e.target as HTMLButtonElement).getAttribute('data-value')!;
+      submitValueField!.value = (e.currentTarget as HTMLButtonElement).getAttribute('data-value')!;
     });
   });
 </script>
