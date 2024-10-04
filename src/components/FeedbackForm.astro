@@ -58,7 +58,8 @@ import { Icon } from 'astro-icon/components';
 
   function onFormSubmit(e: SubmitEvent) {
     e.preventDefault();
-    trackEvent('Feedback:${value}');
+    const value = e.submitter?.dataset.value;
+    trackEvent(`Feedback:${value}`);
     const form = document.querySelector<HTMLFormElement>('.feedback-form');
     (form!.firstElementChild! as HTMLFieldSetElement).disabled = true;
     form!.children;
