@@ -31,6 +31,16 @@ import { Icon } from 'astro-icon/components';
     margin: 0;
     padding: 0;
   }
+
+  .feedback-icon:hover {
+    transform: scale(1.2);
+    color: #5a6672;
+  }
+
+  .feedback-icon:hover {
+    transform: scale(1.2);
+    color: #000;
+  }
 </style>
 
 <form class="feedback-form">
@@ -39,10 +49,10 @@ import { Icon } from 'astro-icon/components';
     <div class="feedback-form-buttons" style="margin-top: 0;">
       <input type="hidden" name="feedback-value" id="feedback-value" value="" />
       <button type="submit" data-value="good" style="margin-top: 0.5rem;">
-        <Icon name="mdi:emoticon-happy-outline" width="32" height="32" />
+        <Icon name="mdi:emoticon-happy-outline" class="feedback-icon" width="32" height="32" />
       </button>
       <button type="submit" data-value="bad"style="margin-top: 0.5rem;" >
-        <Icon name="mdi:emoticon-sad-outline" width="32" height="32" />
+        <Icon name="mdi:emoticon-sad-outline" class="feedback-icon" width="32" height="32" />
       </button>
     </div>
     <div class="feedback-note feedback-note--hidden">
