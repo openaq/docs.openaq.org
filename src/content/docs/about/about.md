@@ -37,7 +37,7 @@ guidance.
 ---
 
 This repository of global air quality data is brought to you by
-[OpenAQ](https://openaq.org/#/), a nonprofit organization founded in the U.S.
+[OpenAQ](https://openaq.org), a nonprofit organization founded in the U.S.
 OpenAQ was the first to aggregate ground-level ambient air quality data on an
 open-source platform. We provide unique value due to a combination of attributes
 that make these data easily accessible, interoperable, interpretable and
