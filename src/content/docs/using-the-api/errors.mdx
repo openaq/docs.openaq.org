@@ -29,6 +29,7 @@ and address any problems that arise when using the API.
         <tr><td>200</td><td>OK</td><td>Successful request.</td></tr>
         <tr><td>401</td><td>Unauthorized</td><td>Valid API key is missing.</td></tr>
         <tr><td>404</td><td>Not Found</td><td>The requested resource does not exist.</td></tr>
+        <tr><td>405</td><td>Method Not Allow</td><td>The HTTP method is not supported. The OpenAQ API currently only supports GET requests.</td></tr>
         <tr><td>408</td><td>Request Timeout</td><td>The request timed out, the query may be too complex causing it to run too long.</td></tr>
         <tr><td>422</td><td>Unprocessable Content</td><td>The query provided is
         incorrect and does not follow the standards set by the API specification.</td></tr>
