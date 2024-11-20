@@ -6,7 +6,6 @@ tableOfContents:
 
 import FeedbackForm from '../../../components/FeedbackForm.astro';
 
-
 import { Aside } from '@astrojs/starlight/components';
 
 The measurements resources in the OpenAQ API provide measurement values from
@@ -24,8 +23,8 @@ API provides options for rolling up data into different aggregation periods.
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/measurements`
 
-The `measurements` resource is the original measurement value as
-reported by the upstream source.
+The `measurements` resource is the original measurement value as reported by the
+upstream source.
 
 ### Hours
 
@@ -43,8 +42,8 @@ The `hours` resource is the hourly average (mean) value of measurements.
 
 `https://api.openaq.org/v3/sensors/{sensors_id}/days`
 
-The `days` resource is the daily average (mean), computed from the hourly average
-values from 01:00 to 0:00 in local time.
+The `days` resource is the daily average (mean), computed from the hourly
+average values from 01:00 to 0:00 in local time.
 
 ### Years
 

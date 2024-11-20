@@ -8,6 +8,7 @@ description:
   efficiently.
 ---
 import FeedbackForm from '../../../components/FeedbackForm.astro';
+import { Aside } from '@astrojs/starlight/components';
 
 
 
@@ -17,6 +18,15 @@ request will return a maximum of 100 results in a single page. This limit can be
 adjusted using the `limit` query parameter, up to a maximum of 1,000 results per
 page, i.e., `limit=1000`. Using this limit in conjunction with the `page` query
 parameter, you can access a large result set across multiple requests.
+
+<Aside type="tip">
+  For resources with a high volume of results, such as `/measurements` and `/hours` using the
+  `datetimeFrom` and `datetimeTo` to limit to a single year or less is highly
+  recommended. Querying the entire dataset and paging using the `page` query
+  parameter alone can be slow. Adding a smaller time range allows the query to
+  leverage database indexes and will generally result in more performant
+  queries.
+</Aside>
 
 The total number of records in a result set is available in the JSON response
 body in the `meta` object under the `found` key. The `meta` object in the
