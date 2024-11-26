@@ -7,23 +7,23 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "knip": "knip"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/sitemap": "^3.2.1",
     "@astrojs/starlight": "^0.26.1",
     "astro": "^4.15.1",
     "astro-icon": "^1.1.1",
     "astro-og-canvas": "^0.5.3",
     "astro-robots-txt": "^1.0.0",
-    "maplibre-gl": "^4.6.0",
     "plausible-tracker": "^0.3.9",
-    "sharp": "^0.32.5",
-    "starlight-openapi": "^0.7.0",
-    "typescript": "^5.5.4"
+    "starlight-openapi": "^0.7.0"
   },
   "devDependencies": {
-    "@iconify-json/mdi": "^1.2.0",
-    "@kindspells/astro-shield": "^1.5.3"
+    "@types/node": "^22.10.0",
+    "knip": "^5.38.1",
+    "typescript": "^5.7.2"
   }
 }
