@@ -22,6 +22,7 @@
     "starlight-openapi": "^0.7.0"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.2.0",
     "@types/node": "^22.10.0",
     "knip": "^5.38.1",
     "typescript": "^5.7.2"

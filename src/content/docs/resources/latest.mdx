@@ -4,7 +4,7 @@ description:
   The Latest resource provides the most recent air quality measurements from
   sensors, including the measurement time, value, location coordinates, and
   sensor information. Track real-time air quality trends and gain insights into
-  the newest data available across locations and parameters.
+  the newest data available across Locations and Parameters.
 ---
 import FeedbackForm from '../../../components/FeedbackForm.astro';
 
@@ -31,8 +31,8 @@ The Latest resource provides access to the newest air quality data from sensors.
 It shows recent measurements and their geographic location, allowing users to
 track air quality trends quickly and make timely decisions.
 
-The Latest resource is accessible through either a single [location](locations),
-showing latest values for all sensors available at that location, or by
+The Latest resource is accessible through either a single [Location](locations),
+showing latest values for all sensors available at that Location, or by
 parameter, showing the latest value across all sensors that measure that
 parameter, e.g.:
 
@@ -55,7 +55,7 @@ https://api.openaq.org/v3/parameters/2/latest
 - coordinates: the location in WGS84 latitude and longitude of the reading.
 - sensorsId: the unique ID for the sensor that took the reading. See the
   [Sensors](sensors) resource page for more information.
-- locationsId: the unique ID for the location where the sensor is situated. See
+- locationsId: the unique ID for the :ocation where the sensor is situated. See
   the [Locations](locations) resource page for more information.
 
 ## Example response payload
