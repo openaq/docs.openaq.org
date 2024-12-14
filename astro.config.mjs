@@ -123,7 +123,7 @@ export default defineConfig({
         ],
       },
     ],
-  }),
+  })
   , sitemap()
   , robotsTxt()
   , icon({
