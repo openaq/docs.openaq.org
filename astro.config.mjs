@@ -16,6 +16,9 @@ export default defineConfig({
       dark: './src/assets/logo-dark.svg',
     },
     favicon: '/favicon.svg',
+    editLink: {
+      baseUrl: 'https://github.com/openaq/docs.openaq.org/edit/main/',
+    },
     head: [
       {
         tag: 'link',
