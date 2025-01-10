@@ -11,6 +11,8 @@ description:
   donation.
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
 The OpenAQ API provides open access to global air quality data, following REST
 principles with resource-oriented URLs, standard HTTP response codes, and
 JSON-formatted responses. OpenAQ focuses on criteria air pollutants, primarily
@@ -33,6 +35,13 @@ documentation for version 1 and 2 is still available in the [reference](/api/)
 section but all other content in this guide pertains to version 3. To get
 started, explore the available endpoints and consult the documentation for
 guidance.
+
+<Aside type="danger" title="Deprecation">
+The OpenAQ version 1 and version 2 endpoints are being retired on January 31,
+2025 and after which will no longer be accessible. Please migrate all existing
+code to version 3 as soon as possible to avoid disruptions. After January 31,
+2025 `/v1` and `/v2` endpoints will return HTTP 410 Gone responses.
+</Aside>
 
 ---
 
