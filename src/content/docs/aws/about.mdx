@@ -2,6 +2,9 @@
 title: About Open Data on AWS
 ---
 
+import FeedbackForm from '../../../components/FeedbackForm.astro';
+
+
 ## Bucket structure
 
 The bucket root url is 
@@ -119,3 +122,5 @@ To learn more about how to subscribe to SNS topics, view the
 Files are written 72 hours after the end of day, i.e. 0:00 for the given
 location's timezone. Files may be retroactively patched if data are missing due
 to fetching error or from historical data scrape.
+
+<FeedbackForm />
