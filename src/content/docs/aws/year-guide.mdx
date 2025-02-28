@@ -3,13 +3,19 @@ title: Guide - Download a year of data for a location.
 ---
 
 import FeedbackForm from '../../../components/FeedbackForm.astro';
+import { Aside } from '@astrojs/starlight/components';
 
 
 This guide shows you how to download a relatively large amount of measurement
 data, one year of hourly measurements from a single location, from the Open Data
 on AWS bucket.
 
-import { Aside } from '@astrojs/starlight/components';
+  <Aside type="note" >
+
+  The AWS CLI must be configured to the `us-east-1` region to access the
+  bucket.
+  </Aside>
+
 
 Run the following command to copy all data from
 [location 2178](https://explore.openaq.org/locations/2178) during the year 2020
