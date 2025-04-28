@@ -20,24 +20,23 @@ hero:
         rel: me noopener noreferrer
 ---
 
-import { CardGrid } from '@astrojs/starlight/components';
-import  CustomCard  from '../../components/CustomCard.astro';
+import { CardGrid, Card } from '@astrojs/starlight/components';
 
 
 ## Explore
 
 <CardGrid stagger>		
-	<CustomCard title="Visit the OpenAQ website" href="https://openaq.org" icon="laptop">
-    Learn more about OpenAQ organization and our activities.
-	</CustomCard>
-	<CustomCard title="Get started with the OpenAQ API" href="/using-the-api/quick-start" icon="open-book">
+	<Card title="Visit the OpenAQ website" icon="laptop">
+    Learn more about OpenAQ organization and our activities at <a href="https://openaq.org">https://openaq.org</a>
+	</Card>
+	<Card title="Get started with the OpenAQ API" href="/using-the-api/quick-start" icon="open-book">
     Try our quick start guide to learn the basics of requesting data from OpenAQ.
-	</CustomCard>
-	<CustomCard title="Read the OpenAQ API OpenAPI Spec" href="https://api.openaq.org/docs" icon="seti:json">
+	</Card>
+	<Card title="Read the OpenAQ API OpenAPI Spec" href="https://api.openaq.org/docs" icon="seti:json">
 		See the Swagger reference documentation for the OpenAQ API.
-	</CustomCard>
-	<CustomCard title="Open data on AWS" href="/aws/about" icon="seti:csv">
+	</Card>
+	<Card title="Open data on AWS" href="/aws/about" icon="seti:csv">
 		Learn how to access the OpenAQ data archive from the Open Data on AWS S3 bucket.
-	</CustomCard>
+	</Card>
 </CardGrid>
 

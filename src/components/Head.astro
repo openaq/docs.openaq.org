@@ -1,9 +1,8 @@
 ---
-import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Head.astro';
 
 const ogImageUrl = new URL(
-  `/og/${Astro.props.id.replace(/\.\w+$/, '.png')}`,
+  `/og/${Astro.props.id?.replace(/\.\w+$/, '.png')}`,
   Astro.site
 );
 ---

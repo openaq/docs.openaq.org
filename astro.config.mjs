@@ -32,11 +32,10 @@ export default defineConfig({
     components: {
       Head: './src/components/Head.astro',
     },
-    social: {
-      github: 'https://github.com/openaq',
-      slack:
-        'https://join.slack.com/t/openaq/shared_invite/zt-yzqlgsva-v6McumTjy2BZnegIK9XCVw',
-    },
+    social: [
+      { icon: 'github', label: 'GitHub', href: 'https://github.com/openaq' },
+      { icon: 'slack', label: 'Slack', href: 'https://join.slack.com/t/openaq/shared_invite/zt-yzqlgsva-v6McumTjy2BZnegIK9XCVw' },
+    ],
     customCss: ['./src/styles/custom.css'],
     plugins: [
       starlightOpenAPI([
