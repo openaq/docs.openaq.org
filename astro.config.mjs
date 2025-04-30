@@ -9,6 +9,7 @@ import robotsTxt from 'astro-robots-txt';
 
 export default defineConfig({
   site: 'https://docs.openaq.org',
+  trailingSlash: "never",
   integrations: [starlight({
     title: 'OpenAQ Docs',
     logo: {
