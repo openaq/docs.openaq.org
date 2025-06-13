@@ -6,12 +6,12 @@ description:
   conditions, and examples for each query type, helping users effectively locate
   air quality data within specified geographic areas.
 ---
-import FeedbackForm from '../../../components/FeedbackForm.astro';
+import FeedbackForm from '@components/FeedbackForm.astro';
 
 
 import { Icon } from '@astrojs/starlight/components';
 
-import Map from '../../../components/Map.astro';
+import Map from '@components/Map.astro';
 
 The OpenAQ API provides two methods for making geospatial queries: bounding box
 and point and radius. Each provides a method for selecting coordinate points
@@ -39,7 +39,7 @@ and Y is latitude.
 - If `bbox` appears in the query with the `coordinates` or `radius` query
   parameters, the API returns an HTTP 422 "Unprocessable Content" error.
 
-import bboxGeoJson from '../../../data/bbox.json';
+import bboxGeoJson from '@data/bbox.json';
 
 ### Example
 
@@ -90,7 +90,7 @@ parameters for the URL looks something like this:
 
 `?coordinates=136.90610,35.14942&radius=12000`
 
-import radiusGeoJson from '../../../data/radius.json';
+import radiusGeoJson from '@data/radius.json';
 
 This can be represented as a circle with a point at the center.
 

@@ -8,8 +8,8 @@ description:
 ---
 
 import { Aside } from '@astrojs/starlight/components';
-import FeedbackForm from '../../../components/FeedbackForm.astro';
-import Map from '../../../components/Map.astro';
+import FeedbackForm from '@components/FeedbackForm.astro';
+import Map from '@components/Map.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Code } from '@astrojs/starlight/components';
 
@@ -28,9 +28,9 @@ information.
 
 ## Filtering locations by parameter
 
-import locationsByParametercURL from '../../../code_examples/curl/locations_by_parameter.sh?raw';
-import locationsByParameterPython from '../../../code_examples/python/locations_by_parameter.py?raw';
-import locationsByParameterR from '../../../code_examples/r/locations_by_parameter.r?raw';
+import locationsByParametercURL from '@codeExamples/curl/locations_by_parameter.sh?raw';
+import locationsByParameterPython from '@codeExamples/python/locations_by_parameter.py?raw';
+import locationsByParameterR from '@codeExamples/r/locations_by_parameter.r?raw';
 
 <Tabs>
   <TabItem label="cURL">
@@ -51,12 +51,12 @@ results to 1,000 per page.
 
 ## Finding locations near a point
 
-import radiusQuerycURL from '../../../code_examples/curl/radius_query.sh?raw';
-import radiusQueryPython from '../../../code_examples/python/radius_query.py?raw';
-import radiusQueryR from '../../../code_examples/r/radius_query.r?raw';
+import radiusQuerycURL from '@codeExamples/curl/radius_query.sh?raw';
+import radiusQueryPython from '@codeExamples/python/radius_query.py?raw';
+import radiusQueryR from '@codeExamples/r/radius_query.r?raw';
 
 
-import radiusGeoJson from '../../../data/radius.json';
+import radiusGeoJson from '@data/radius.json';
 
 <Tabs>
   <TabItem label="cURL">
@@ -87,11 +87,11 @@ information on geospatial querying. This radius query represents an area like:
 
 ## Finding locations in a bounding box
 
-import bboxQuerycURL from '../../../code_examples/curl/bbox_query.sh?raw';
-import bboxQueryPython from '../../../code_examples/python/bbox_query.py?raw';
-import bboxQueryR from '../../../code_examples/r/bbox_query.r?raw';
+import bboxQuerycURL from '@codeExamples/curl/bbox_query.sh?raw';
+import bboxQueryPython from '@codeExamples/python/bbox_query.py?raw';
+import bboxQueryR from '@codeExamples/r/bbox_query.r?raw';
 
-import labbox from '../../../data/labbox.json';
+import labbox from '@data/labbox.json';
 
 <Tabs>
   <TabItem label="cURL">
@@ -121,9 +121,9 @@ geospatial querying. This bounding box represents an area like the following:
 
 ## Fetch original measurements for a sensor
 
-import sensorMeasurementscURL from '../../../code_examples/curl/sensor_measurements.sh?raw';
-import sensorMeasurementsPython from '../../../code_examples/python/sensor_measurements.py?raw';
-import sensorMeasurementsR from '../../../code_examples/r/sensor_measurements.r?raw';
+import sensorMeasurementscURL from '@codeExamples/curl/sensor_measurements.sh?raw';
+import sensorMeasurementsPython from '@codeExamples/python/sensor_measurements.py?raw';
+import sensorMeasurementsR from '@codeExamples/r/sensor_measurements.r?raw';
 
 <Tabs>
   <TabItem label="cURL">
@@ -145,9 +145,9 @@ sensor and limits the number results to 1,000 per page.
 
 ## Fetch daily average values for a sensor
 
-import dailyAveragecURL from '../../../code_examples/curl/daily_average.sh?raw';
-import dailyAveragePython from '../../../code_examples/python/daily_average.py?raw';
-import dailyAverageR from '../../../code_examples/r/daily_average.r?raw';
+import dailyAveragecURL from '@codeExamples/curl/daily_average.sh?raw';
+import dailyAveragePython from '@codeExamples/python/daily_average.py?raw';
+import dailyAverageR from '@codeExamples/r/daily_average.r?raw';
 
 <Tabs>
   <TabItem label="cURL">
@@ -167,9 +167,9 @@ results to 1,000 per page.
 
 ## Fetch yearly average values, computed from daily averages for a sensor
 
-import yearlyAveragecURL from '../../../code_examples/curl/yearly_average.sh?raw';
-import yearlyAveragePython from '../../../code_examples/python/yearly_average.py?raw';
-import yearlyAverageR from '../../../code_examples/r/yearly_average.r?raw';
+import yearlyAveragecURL from '@codeExamples/curl/yearly_average.sh?raw';
+import yearlyAveragePython from '@codeExamples/python/yearly_average.py?raw';
+import yearlyAverageR from '@codeExamples/r/yearly_average.r?raw';
 
 <Tabs>
   <TabItem label="cURL">
@@ -188,9 +188,9 @@ values for sensor 3917, an Ozone sensor, and limits the number results to 1,000
 per page.
 
 ## Get the latest PM<sub>2.5</sub> values
-import latestParametercURL from '../../../code_examples/curl/latest_parameter.sh?raw';
-import latestParameterPython from '../../../code_examples/python/latest_parameter.py?raw';
-import latestParameterR from '../../../code_examples/r/latest_parameter.r?raw';
+import latestParametercURL from '@codeExamples/curl/latest_parameter.sh?raw';
+import latestParameterPython from '@codeExamples/python/latest_parameter.py?raw';
+import latestParameterR from '@codeExamples/r/latest_parameter.r?raw';
 
 <Tabs>
   <TabItem label="cURL">

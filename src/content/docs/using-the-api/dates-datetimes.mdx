@@ -7,7 +7,7 @@ description:
   air quality measurements.
 ---
 
-import FeedbackForm from '../../../components/FeedbackForm.astro';
+import FeedbackForm from '@components/FeedbackForm.astro';
 
 
 import { Icon } from '@astrojs/starlight/components';
@@ -59,8 +59,8 @@ datetime object which includes both UTC time and local time.
 The OpenAQ API provides the timezone ID string for a given monitoring location
 under the `timezone` key. This follows the tzid in the <a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer" style="display:inline-flex;">Time Zone Database <Icon name="external" /></a>
 
-import Map from '../../../components/Map.astro';
-import timezones from '../../../data/tz.json';
+import Map from '@components/Map.astro';
+import timezones from '@data/tz.json';
 
 <Map
   latitude={20}
