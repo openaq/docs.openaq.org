@@ -9,7 +9,9 @@ description:
 
 import { Aside } from '@astrojs/starlight/components';
 import FeedbackForm from '../../../components/FeedbackForm.astro';
-
+import Map from '../../../components/Map.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
 
 
 This page provides examples of common queries and how to use the OpenAQ API to
@@ -23,28 +25,51 @@ information.
   HTTP 401 error, replace with your own API key.
 </Aside>
 
-import Map from '../../../components/Map.astro';
 
 ## Filtering locations by parameter
 
-```sh
-    curl --request GET \
-    --url "https://api.openaq.org/v3/locations?parameters_id=2&limit=1000" \
-    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
-```
+import locationsByParametercURL from '../../../code_examples/curl/locations_by_parameter.sh?raw';
+import locationsByParameterPython from '../../../code_examples/python/locations_by_parameter.py?raw';
+import locationsByParameterR from '../../../code_examples/r/locations_by_parameter.r?raw';
+
+<Tabs>
+  <TabItem label="cURL">
+    <Code code={locationsByParametercURL} lang='sh' />
+  </TabItem>
+  <TabItem label="Python">
+      <Code code={locationsByParameterPython} lang='python' title="example.py" />
+
+  </TabItem>
+  <TabItem label="R">
+      <Code code={locationsByParameterR} lang='r' title="example.R"/>
+  </TabItem>
+</Tabs>
+
 
 Where parameters_id 2 is the ID for PM<sub>2.5</sub> and limits the number
 results to 1,000 per page.
 
 ## Finding locations near a point
 
+import radiusQuerycURL from '../../../code_examples/curl/radius_query.sh?raw';
+import radiusQueryPython from '../../../code_examples/python/radius_query.py?raw';
+import radiusQueryR from '../../../code_examples/r/radius_query.r?raw';
+
+
 import radiusGeoJson from '../../../data/radius.json';
 
-```sh
-    curl --request GET \
-    --url "https://api.openaq.org/v3/locations?coordinates=136.90610,35.14942&radius=12000&limit=1000" \
-    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
-```
+<Tabs>
+  <TabItem label="cURL">
+    <Code code={radiusQuerycURL} lang='sh' />
+  </TabItem>
+  <TabItem label="Python">
+      <Code code={radiusQueryPython} lang='python' title="example.py" />
+
+  </TabItem>
+  <TabItem label="R">
+      <Code code={radiusQueryR} lang='r' title="example.R"/>
+  </TabItem>
+</Tabs>
 
 Where `136.90610,35.14942` is the central point in latitude,longitude and the
 radius is 12,000 meters (12km) and limits the number results to 1,000 per page.
@@ -62,13 +87,24 @@ information on geospatial querying. This radius query represents an area like:
 
 ## Finding locations in a bounding box
 
+import bboxQuerycURL from '../../../code_examples/curl/bbox_query.sh?raw';
+import bboxQueryPython from '../../../code_examples/python/bbox_query.py?raw';
+import bboxQueryR from '../../../code_examples/r/bbox_query.r?raw';
+
 import labbox from '../../../data/labbox.json';
 
-```sh
-    curl --request GET \
-    --url "https://api.openaq.org/v3/locations?bbox=-118.668153,33.703935,-118.155358,34.337306&limit=1000" \
-    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
-```
+<Tabs>
+  <TabItem label="cURL">
+    <Code code={bboxQuerycURL} lang='sh' />
+  </TabItem>
+  <TabItem label="Python">
+      <Code code={bboxQueryPython} lang='python' title="example.py" />
+
+  </TabItem>
+  <TabItem label="R">
+      <Code code={bboxQueryR} lang='r' title="example.R"/>
+  </TabItem>
+</Tabs>
 
 Where `-118.668153,33.703935,-118.155358,34.337306` is the bounding box within
 which to search and limits the number results to 1,000 per page. See the
@@ -85,11 +121,22 @@ geospatial querying. This bounding box represents an area like the following:
 
 ## Fetch original measurements for a sensor
 
-```sh
-    curl --request GET \
-    --url "https://api.openaq.org/v3/sensors/3917/measurements?limit=1000" \
-    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
-```
+import sensorMeasurementscURL from '../../../code_examples/curl/sensor_measurements.sh?raw';
+import sensorMeasurementsPython from '../../../code_examples/python/sensor_measurements.py?raw';
+import sensorMeasurementsR from '../../../code_examples/r/sensor_measurements.r?raw';
+
+<Tabs>
+  <TabItem label="cURL">
+    <Code code={sensorMeasurementscURL} lang='sh' />
+  </TabItem>
+  <TabItem label="Python">
+      <Code code={sensorMeasurementsPython} lang='python' title="example.py" />
+
+  </TabItem>
+  <TabItem label="R">
+      <Code code={sensorMeasurementsR} lang='r' title="example.R"/>
+  </TabItem>
+</Tabs>
 
 This fetches the original[^1] measurement values for sensor 3917, an Ozone
 sensor and limits the number results to 1,000 per page.
@@ -98,11 +145,21 @@ sensor and limits the number results to 1,000 per page.
 
 ## Fetch daily average values for a sensor
 
-```sh
-    curl --request GET \
-    --url "https://api.openaq.org/v3/sensors/3917/days?limit=1000" \
-    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
-```
+import dailyAveragecURL from '../../../code_examples/curl/daily_average.sh?raw';
+import dailyAveragePython from '../../../code_examples/python/daily_average.py?raw';
+import dailyAverageR from '../../../code_examples/r/daily_average.r?raw';
+
+<Tabs>
+  <TabItem label="cURL">
+    <Code code={dailyAveragecURL} lang='sh' />
+  </TabItem>
+  <TabItem label="Python">
+      <Code code={dailyAveragePython} lang='python' title="example.py" />
+  </TabItem>
+  <TabItem label="R">
+      <Code code={dailyAverageR} lang='r' title="example.R"/>
+  </TabItem>
+</Tabs>
 
 This fetches the daily average (mean) values, computed from the original
 measurement values for sensor 3917, an Ozone sensor, and limits the number
@@ -110,24 +167,42 @@ results to 1,000 per page.
 
 ## Fetch yearly average values, computed from daily averages for a sensor
 
-```sh
-    curl --request GET \
-    --url "https://api.openaq.org/v3/sensors/3917/days/yearly?limit=1000" \
-    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
-```
+import yearlyAveragecURL from '../../../code_examples/curl/yearly_average.sh?raw';
+import yearlyAveragePython from '../../../code_examples/python/yearly_average.py?raw';
+import yearlyAverageR from '../../../code_examples/r/yearly_average.r?raw';
+
+<Tabs>
+  <TabItem label="cURL">
+    <Code code={yearlyAveragecURL} lang='sh' />
+  </TabItem>
+  <TabItem label="Python">
+      <Code code={yearlyAveragePython} lang='python' title="example.py" />
+  </TabItem>
+  <TabItem label="R">
+      <Code code={yearlyAverageR} lang='r' title="example.R"/>
+  </TabItem>
+</Tabs>
 
 This fetches the yearly average (mean) values, computed from the daily average
 values for sensor 3917, an Ozone sensor, and limits the number results to 1,000
 per page.
 
 ## Get the latest PM<sub>2.5</sub> values
+import latestParametercURL from '../../../code_examples/curl/latest_parameter.sh?raw';
+import latestParameterPython from '../../../code_examples/python/latest_parameter.py?raw';
+import latestParameterR from '../../../code_examples/r/latest_parameter.r?raw';
 
-```sh
-    curl --request GET \
-    --url "https://api.openaq.org/v3/parameters/2/latest?limit=1000" \
-    --header "X-API-Key: YOUR-OPENAQ-API-KEY"
-```
-
+<Tabs>
+  <TabItem label="cURL">
+    <Code code={latestParametercURL} lang='sh' />
+  </TabItem>
+  <TabItem label="Python">
+      <Code code={latestParameterPython} lang='python' title="example.py" />
+  </TabItem>
+  <TabItem label="R">
+      <Code code={latestParameterR} lang='r' title="example.R"/>
+  </TabItem>
+</Tabs>
 This fetches the latest PM<sub>2.5</sub> (parameter ID 2) for all sensors across
 the OpenAQ dataset and limits the number results to 1,000 per page.
 
