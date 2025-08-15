@@ -1,0 +1,39 @@
+---
+title: 422 Unprocessable Content
+description: Learn about the HTTP 422 Unprocessable Content status code and how to solve common causes of this error in the OpenAQ API.
+---
+
+import FeedbackForm from '@components/FeedbackForm.astro';
+
+# HTTP 422 Unprocessable Content
+
+The HTTP 422 Unprocessable Content status code indicates that the server
+understands the request and the request syntax is correct, but it cannot process
+the request due to errors in the query parameters. This typically occurs when
+parameter values are invalid, out of range, or violate logical rules.
+
+A 422 response is the correct server behavior when request parameters are
+syntactically valid but semantically incorrect. The OpenAQ API is properly
+validating input and preventing invalid queries from executing. This is a
+client-side parameter validation issue rather than a server malfunction.
+
+## How to Resolve
+
+Review the `errors` array in the response body to identify which specific
+parameters are invalid and why. Each error will indicate the parameter name, the 
+provided value, and the reason for rejection. Correct the invalid parameters
+according to the error messages and API documentation requirements for the
+relevant resource endpoint.
+
+### Common issues
+
+- **Invalid date formats**: Providing dates in incorrect format (e.g., `datetime_from=2024/01/01` instead of `datetime_from=2024-01-01T00:00:00Z`)
+- **Date range violations**: End date before start date, or date ranges exceeding maximum allowed period
+- **Out of range coordinates**: Latitude values outside ±90° or longitude values outside ±180°
+- **Invalid parameter combinations**: Using mutually exclusive parameters together or required parameter dependencies not met
+- **Exceeding limits**: Requesting page sizes or limits that exceed maximum allowed values
+- **Invalid enum values**: Using values not in the accepted list for parameters like units, spatial aggregation types, or measurement methods
+- **Type mismatches**: Providing string values where numbers are expected, or vice versa
+
+
+<FeedbackForm />

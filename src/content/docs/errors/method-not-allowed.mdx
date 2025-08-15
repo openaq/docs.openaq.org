@@ -1,0 +1,26 @@
+---
+title: 405 Method Not Allowed 
+description: Learn about the HTTP 405 Method Not Allowed status code and how to solve common causes of this error in the OpenAQ API.
+---
+
+import FeedbackForm from '@components/FeedbackForm.astro';
+
+
+The HTTP 405 Method Not Allowed status code indicates that the server
+understands the request method but refuses to fulfill it. In the context of the
+OpenAQ API, this error is encountered when you attempt to use an HTTP method
+other than [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/GET).
+Any attempt to use other methods, such as POST, PUT, DELETE, or PATCH, to
+interact with endpoints will result in a 405 Method Not Allowed error.
+
+A 405 response is the correct server behavior when unsupported HTTP methods are
+used, the API is properly enforcing its read-only design. This indicates a
+client-side method selection issue rather than a server issue.
+
+## How to Resolve
+
+Change your request method to HTTP [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/GET).
+The OpenAQ API only supports GET requests for retrieving data and does not accept
+methods designed for creating, updating, or deleting resources.
+
+<FeedbackForm />

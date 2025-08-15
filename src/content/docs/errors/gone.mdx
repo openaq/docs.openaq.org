@@ -1,0 +1,33 @@
+---
+title: 410 Gone 
+description: Learn about the HTTP 410 Gone status code and how to solve common causes of this error in the OpenAQ API.
+---
+
+import FeedbackForm from '@components/FeedbackForm.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+
+The HTTP 410 Gone status code indicates that the requested resource existed
+previously but has been permanently removed and is no longer available. This
+status code is returned when attempting to access OpenAQ API version 1 or
+version 2 endpoints, all of which were retired in January 2025 and are no longer
+available.
+
+A 410 response is the correct server behavior when resources have been
+permanently removed. The OpenAQ API is properly indicating that the requested
+endpoint no longer exists and will not return. This is different from a [404 
+error](/errors/not-found) in that it confirms the resource did previously exist.
+
+<Aside type="caution" title="Warning" >
+Repeated requests to retired endpoints may result in an account suspension or
+permanent ban. Only request valid API version resources.
+</Aside>
+
+## How to Resolve
+
+Migrate your code to use OpenAQ API version 3 endpoints, as documented in the
+API reference documentation.
+
+
+
+<FeedbackForm />
