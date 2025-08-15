@@ -1,0 +1,37 @@
+---
+title: 401 Unauthorized
+description: Learn about the HTTP 401 Unauthorized status code and how to solve common causes of this error in the OpenAQ API.
+---
+
+import FeedbackForm from '@components/FeedbackForm.astro';
+
+The HTTP 401 Unauthorized status code indicates that the request lacks valid
+authentication credentials. This means either no API key was provided, the API
+key is invalid, expired, or the authentication header is malformed. Access to
+the requested resource requires proper authentication in the form of an 
+OpenAQ [API key](/using-the-api/api-key).
+
+## How to Resolve
+
+A 401 response is the correct server behavior when authentication fails, the
+OpenAQ API is properly protecting resources that require a valid API key. This
+is a client-side authentication issue rather than a server malfunction.
+
+Verify that you are including a valid API key in your request in the
+`X-API-Key` header and that it is properly formatted in the authentication
+header. If you don't have an API key, you must to register for one through
+the [OpenAQ Explorer](https://explore.openaq.org).
+
+### Common issues
+
+- **Missing API key**: No authentication credentials were provided in the
+request, ensure you include your API key in the `X-API-Key` request header
+- **Invalid API key format**: The API key may be malformed, truncated, or
+contain invalid characters. Verify you copied the complete key correctly
+- **Incorrect header format**: The authentication header may be improperly
+formatted - ensure you're using the correct header name `X-API-Key`
+- **Revoked credentials**: Your API key may have been revoked due to terms of 
+use violations, check your OpenAQ account for notifications
+
+
+<FeedbackForm />

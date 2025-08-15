@@ -1,0 +1,37 @@
+---
+title: 404 Not Found
+description: Learn about the HTTP 404 Not Found status code and how to solve common causes of this error in the OpenAQ API.
+---
+
+import FeedbackForm from '@components/FeedbackForm.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+
+# HTTP 404 Not Found
+
+The HTTP 404 Not Found status code indicates that the server cannot find the
+requested resource. This means either the endpoint URL is incorrect, or the
+specific resource identifier (such as a location ID, measurement ID, or parameter ID)
+does not exist in the OpenAQ database.
+
+A 404 response is the correct behavior to indicating that a requested resource
+simply does not exist. This is a client-side issue rather than a system
+malfunction. the OpenAQ API is functioning properly by accurately reporting the
+non-existence of the requested resource.
+
+## How to Resolve
+
+Check that the resource endpoint requested is in fact a valid endpoint as listed
+in the API reference documentation. 
+
+If the endpoint is a valid resource endpoint and a 404 Not Found is returned,
+the specific resource ID may not exist. Double check the resource identifier and
+verify it exists in the system.
+
+### Common issues
+
+- **Incorrect endpoint URL**: Verify the endpoint path matches the API documentation exactly, including correct spelling and capitalization
+- **Invalid resource ID**: The resource identifier may not exist or may have been removed from the system
+- **Missing API version**: Verify you are including the correct API version in your request path i.e. `/v3/`
+
+<FeedbackForm />

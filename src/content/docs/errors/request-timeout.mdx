@@ -1,0 +1,39 @@
+---
+title: 408 Request Timeout
+description: Learn about the HTTP 408 Request Timeout status code and how to solve common causes of this error in the OpenAQ API.
+---
+
+import FeedbackForm from '@components/FeedbackForm.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+The HTTP 408 Request Timeout status code indicates that the server understands 
+the request method but has timed out waiting for the request to complete. This
+typically occurs when queries are too broad or request large datasets.
+
+<Aside type="caution" title="Warning" >
+Repeated request timeouts may result in a temporary suspension for overutilizing
+resources. Plan requests to be mindful of the API rate limits and query
+complexity.
+</Aside>
+
+## How to Resolve
+
+Request timeouts are not server errors but rather indicate that your query is
+too resource-intensive or broad for the server to complete within the allocated
+time limit. The OpenAQ API is functioning correctly by preventing queries that
+would consume excessive resources and impact performance for other users.
+
+To resolve timeout issues, refine your query parameters to be more specific and
+request smaller datasets. Consider breaking large requests into smaller, more
+targeted queries or adding filters to reduce the scope of data being retrieved.
+
+### Common issues
+
+- **Overly broad time ranges**: Requesting data spanning months or years without
+sufficient temporal filtering may cause timeouts, try narrowing the date range.
+- **Complex aggregation queries**: Requests involving heavy data processing may
+timeout - consider using pre-aggregated endpoints when available
+- **Insufficient query parameters**: Very general queries without specific
+filters may timeout due to querying a very large amount of results.
+
+<FeedbackForm />

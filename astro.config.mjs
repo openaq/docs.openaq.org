@@ -77,7 +77,6 @@ export default defineConfig({
             label: 'Geospatial queries',
             slug: 'using-the-api/geospatial',
           },
-          { label: 'Errors', slug: 'using-the-api/errors' },
           {
             label: 'Client libraries',
             slug: 'using-the-api/libraries',
@@ -107,6 +106,20 @@ export default defineConfig({
           { label: 'Parameters', slug: 'resources/parameters' },
           { label: 'Providers', slug: 'resources/providers' },
           { label: 'Sensors', slug: 'resources/sensors' },
+        ],
+      },
+      {
+        label: 'Errors',
+        items: [
+          { label: 'About', slug: 'errors/about' },
+          { label: '401 - Unauthorized', slug: 'errors/unauthorized' },
+          { label: '403 - Forbidden', slug: 'errors/forbidden' },
+          { label: '404 - Not Found', slug: 'errors/not-found' },
+          { label: '405 - Method Not Allowed', slug: 'errors/method-not-allowed' },
+          { label: '408 - Request Timeout', slug: 'errors/request-timeout' },
+          { label: '410 - Gone', slug: 'errors/gone' },
+          { label: '422 - Unprocessable Content', slug: 'errors/unprocessable-content' },
+          { label: '429 - Too Many Requests', slug: 'errors/too-many-requests' },
         ],
       },
       ...openAPISidebarGroups,

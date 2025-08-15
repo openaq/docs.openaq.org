@@ -1,0 +1,54 @@
+---
+title: 429 Too Many Requests
+description: Learn about the HTTP 429 Too Many Requests status code and how to solve common causes of this error in the OpenAQ API.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import FeedbackForm from '@components/FeedbackForm.astro';
+
+
+The HTTP 429 Too Many Requests status code indicates that the client has sent
+too many requests in a given amount of time. The OpenAQ API has rate limits to
+ensure fair access and prevent abuse. When you exceed these limits, the server
+will respond with an HTTP 429 error.
+
+The rate limits for the OpenAQ API are quite generous, but it's important to be
+mindful of your request frequency, especially when running automated scripts or
+applications. If you receive a 429 error, it means you have temporarily been
+blocked from making further requests for a set period. Read more about rate
+limits in the [Rate limits](/using-the-api/rate-limits) section of this site.
+
+<Aside type="caution" title="Warning" >
+Exceeding API rate limits repeatedly can lead to either a temporary
+or permanent ban from the OpenAQ API. To maintain uninterrupted access, plan
+your API requests carefully.
+</Aside>
+
+## How to Resolve
+
+<Aside type="note" >
+OpenAQ provides official libraries in Python and R which help handle more complex
+aspects of the API automatically, including rate limiting. If working in Python 
+of R, the official libraries are the recommended option for best practices. 
+Learn more about the libraries in the [Libaries](/using-the-api/libraries) page.
+</Aside>
+
+### Utilize rate limit headers
+
+To resolve a 429 Too Many Requests error and prevent it from happening again,
+implement a strategy to manage request frequency. The OpenAQ API provides [HTTP
+header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers) with 
+most responses that contain information on current API rate limit status. These
+headers contain information such as current number of requests used in the rate
+limit period, remaining requests in the rate limit period, and time until rate
+limit period resets. Read more about rate limit headers on the [Rate limit](/using-the-api/rate-limits#rate-limit-headers)
+page. 
+
+### Consider a Higher Rate Limit 
+
+If your usage is consistently exceeding the general use rate limits and you have
+a need for a higher volume of requests, you can contact the OpenAQ team to
+discuss a custom rate limit.
+
+
+<FeedbackForm />

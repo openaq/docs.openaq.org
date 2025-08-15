@@ -1,0 +1,27 @@
+---
+title: 403 Forbidden 
+description: Learn about the HTTP 403 Forbidden status code and how to solve common causes of this error in the OpenAQ API.
+---
+
+import FeedbackForm from '@components/FeedbackForm.astro';
+
+
+The HTTP 403 Forbidden status code indicates that server understood the request
+but is refusing to authorize access to the requested resource. This status code
+is most likely an indicator that the user account or IP address of the requester
+has been blocked due to a violation of the OpenAQ platform [Terms of use](/about/terms)
+or rate limit abuse.
+
+A 403 response is the correct server behavior when access is legitimately
+restricted. The OpenAQ API is properly enforcing access controls and usage
+policies. This indicates an authorization issue rather than a server malfunction.
+
+
+## How to Resolve
+
+403 restrictions due to policy violations or account suspensions will not be
+automatically lifted and require manual intervention. Contact dev@openaq.org to
+resolve the issue, providing details about your use case and recent API
+activity.
+
+<FeedbackForm />
