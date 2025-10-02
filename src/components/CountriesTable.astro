@@ -1,0 +1,22 @@
+---
+import countries from '@data/countries.json';
+---
+
+<table>
+  <thead>
+    <th>id</th>
+    <th>name</th>
+    <th>ISO A2</th>
+  </thead>
+  <tbody>
+    {
+      countries.results.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)).map((o) => 
+        <tr>
+          <td>{o.id}</td>
+          <td>{o.name}</td>
+          <td>{o.code}</td>
+        </tr>
+      )
+    }
+  </tbody>
+</table>
