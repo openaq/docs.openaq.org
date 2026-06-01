@@ -11,10 +11,10 @@
     "knip": "knip"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/sitemap": "^3.5.0",
-    "@astrojs/starlight": "^0.35.2",
-    "astro": "^5.13.2",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/starlight": "^0.39.2",
+    "astro": "^6.4.2",
     "astro-icon": "^1.1.1",
     "astro-og-canvas": "^0.5.5",
     "astro-robots-txt": "^1.0.0",
