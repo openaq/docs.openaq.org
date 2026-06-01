@@ -62,15 +62,16 @@ import { Icon } from 'astro-icon/components';
 </form>
 
 <script>
-  import Plausible from 'plausible-tracker';
-  const { trackEvent } = Plausible({
-    domain: 'docs.openaq.org',
-  });
+    import { init, track } from '@plausible-analytics/tracker';
+
+    init({
+      domain: 'docs.openaq.org',
+    });
 
   function onFormSubmit(e: SubmitEvent) {
     e.preventDefault();
     const value = submitValueField.value;
-    trackEvent(`Feedback:${value}`);
+    track(`Feedback:${value}`, {});
     const form = document.querySelector<HTMLFormElement>('.feedback-form');
     (form!.firstElementChild! as HTMLFieldSetElement).disabled = true;
     form!.children;
