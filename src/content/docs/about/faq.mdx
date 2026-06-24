@@ -1,0 +1,172 @@
+---
+title: Frequently Asked Questions
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## I'd like to use the data on OpenAQ. Can I do that? What are examples of ways to use the data on OpenAQ?
+
+Yes! The data on OpenAQ are provided for free (within rate limits). Before using
+OpenAQ, read the [terms of use](https://docs.openaq.org/about/terms). We require
+responsible platform and data usage.
+
+Data on OpenAQ are used for many purposes, including scientific research,
+journalism, and advocacy for clean air solutions. Find examples on our
+[Use Cases](https://openaq.org/about/use-cases/) page and
+[Medium blog site](https://openaq.medium.com/).
+
+## How can I access and/or download the data in OpenAQ?
+
+We offer a few different ways to access air quality data, depending on your
+technical setup. You can find detailed setup guides and code snippets right here
+in our documentation:
+
+ - For Programmatic Access: Head over to our [Quick start
+ guide](/using-the-api/quick-start) to learn how to authenticate and query our
+ REST API. If you use language wrappers, we have dedicated integration guides
+ for both our [Python SDK docs](https://python.openaq.org) and [R Client
+ documentation](https://openaq.github.io/openaq-r).
+
+- Explore the dataset: If you prefer browsing via a graphical UI without writing
+code, check out our [OpenAQ Explorer](https://explore.openaq.org). We also 
+provide a [Getting Started guide](https://explore.openaq.org/getting-started) to
+walk you through how to use the web app to search the database and export CSVs
+directly from your browser.
+
+- For Bulk Data Downloads: If you need to access large amounts of historical
+data, view our [AWS S3 Quick Start Guide](https://docs.openaq.org/aws/quick-start)
+here in the docs.
+
+## I am having trouble using OpenAQ. How can I troubleshoot?
+
+* Explore the rest of this documentation: You can find dedicated guides and
+references for our specific tools here:
+  * API Reference: [https://docs.openaq.org/](https://docs.openaq.org/)
+  * Python SDK: [https://python.openaq.org/](https://python.openaq.org/)  
+  * R package: [https://openaq.github.io/openaq-r/](https://openaq.github.io/openaq-r/)
+* Get real-time help: Join our [Slack](http://link.openaq.org/joinslack)
+community to ask questions and chat with other users.
+
+We also offer training sessions for groups. Contact us if you would like to host
+an OpenAQ training for your research group or organization (due to limited
+capacity, we prioritize larger, mission-aligned projects).
+
+## What are the licensing terms for using the data on OpenAQ?
+
+OpenAQ aggregates air quality data from government agencies and other sources
+worldwide. The data on our platform come with different licensing terms (terms
+that define how the data can be used), depending on the original source. The
+OpenAQ API provides information including the relevant data license for
+monitoring locations. Read more about accessing license information on the API
+[here.](https://docs.openaq.org/resources/licenses)
+
+- Review license terms: You are responsible for reviewing and complying with the
+licensing terms of the original data owner. Many require attribution under
+Creative Commons licenses, open government licenses, or custom terms.
+
+- Attribute original sources: When required by the data license, you must
+acknowledge the original source(s) of any data you use. We provide attribution
+information through our web interface and APIs to help you meet these
+requirements.
+
+- Attribute OpenAQ: You must also credit OpenAQ as your access point for the
+data when using our services.
+
+<Aside type="caution" title="Important">
+While we only aggregate data that we believe has been madeavailable for public
+redistribution and use, we cannot guarantee that all data is free from
+third-party claims. You are solely responsible for ensuring your use complies
+with applicable laws and any third-party terms based on the provided license.
+</Aside>
+
+We encourage users to attribute all data sources, even when not explicitly
+required, as a best practice for transparency and data integrity.
+
+## Why isn't a specific air quality monitoring station showing up on OpenAQ when I can see it on other platforms?
+
+This may be due to one or a combination of reasons:
+
+* We may not be ingesting the data yet. We may not know about the data, or if we
+are aware of the data, we may not have developed the tooling to ingest that
+data.
+* The data do not meet the criteria for ingestion. OpenAQ only ingests
+openly-licensed data (e.g.,
+[CC0](https://creativecommons.org/public-domain/cc0/),
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) that report
+air quality measurements in concentration values (i.e., not air quality indices)
+and are complete with geographical coordinates and datetimes. Acceptable data
+frequency is between 10 minutes and 24 hours. We only ingest stationary,
+ground-level data and do not ingest satellite data or airborne data. We
+prioritize PM<sub>2.5</sub>, PM<sub>10</sub>, NO<sub>2</sub>, NO<sub>x</sub>,
+NO, O<sub>3</sub>, SO<sub>2</sub>, CO, and BC data and associated temperature
+and relative humidity data that come with the source.
+* There may be a technical issue blocking data flow from the data source to
+OpenAQ. If you suspect this (e.g., you see historical data but no current data),
+submit an issue on [GitHub](https://github.com/openaq). Include the location ID,
+and, if the issue extends to other locations from the same data source, share
+that information too.
+* The data source may have stopped sharing its data. There are multiple reasons
+why a source may have stopped sharing data: the devices stopped working; they no
+longer share their data under an open license; or the project may have ended. If
+you suspect this to be the case, please contact the data source.
+
+If you know of a data source that meets our criteria for ingestion and would
+like to recommend that we share the data on OpenAQ, let us know. Check out our
+[roadmap](https://openaq.org/platform/roadmap/) for our areas of priority such
+as areas of the world where people are most impacted by pollution and there is
+little to no access to data (e.g., low- and middle-income countries, vulnerable
+areas). We are especially keen to share government-produced data and data
+filling gaps in geographies with high air pollution.
+
+## I am looking at a location, but I am not seeing data for certain periods of time. Why?
+
+Similar to some of the reasons mentioned above, there might be technical issues
+from the upstream data provider or we might have experienced technical issues
+that prevented ingestion during certain periods.
+
+## How do I report a security vulnerability in OpenAQ? Are there bug bounties?
+
+OpenAQ follows the proposed security.txt [standard](https://securitytxt.org/),
+which helps direct researchers to the right security contact information and
+policies. Find our security.txt file on any covered domain, or visit our
+complete security policy at [openaq.org/security](http://openaq.org/security)
+for full reporting requirements, responsible disclosure guidelines, data
+protection rules, and prohibited activities.
+
+If you've found a security issue with the OpenAQ platform or tools, we
+appreciate your responsible disclosure.
+
+- How to Report: Include the URL/IP address, vulnerability type, reproduction
+steps, and any screenshots or logs in your report.
+
+- Bug Bounties: OpenAQ does not offer monetary rewards or bug bounties for
+vulnerability reports.
+
+- Response Time: You'll receive confirmation within 5 working days, and we'll 
+assess your report within 10 working days.
+
+
+## Can I call the OpenAQ API directly in my mobile app or web application?
+
+Direct API calls from client-side applications (mobile apps, web applications)
+are strongly discouraged and will likely fail due to:
+
+* Rate Limiting: Client applications with multiple users will quickly exceed our
+API rate limits, leading to blocked requests. Repeatedly breaking rate limits
+will result in your account being blocked for violating our terms of use.
+
+* CORS Policies: We do not allow cross-origin requests from browsers, so 
+lient-side JavaScript requests to our API are not possible. If you attempt to
+fetch OpenAQ data from JavaScript in a web browser, you will see an error like:
+
+    ```
+    Access to fetch at 'https://api.openaq.org/...' from origin 
+    'https://yoursite.com' has been blocked by CORS policy: No 
+    'Access-Control-Allow-Origin' header is present on the 
+    requested resource.
+    ```
+
+A common solution is to set up your own backend server to proxy data requests
+from the OpenAQ API, then have your client application request data from your
+server instead. This approach respects our rate limits, avoids CORS issues, and
+can provide better control over caching and limiting requests.
