@@ -53,6 +53,7 @@ export default defineConfig({
         label: 'About the API',
         items: [
           { label: 'About the API', slug: 'about/about' },
+          { label: 'FAQ', slug: 'about/faq' },
           { label: 'Terms of use', slug: 'about/terms' },
         ],
       },
